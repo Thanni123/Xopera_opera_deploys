@@ -1,0 +1,82 @@
+{
+  "tosca_name": {
+    "is_set": true,
+    "data": "AwsLambdaFunction"
+  },
+  "tosca_id": {
+    "is_set": true,
+    "data": "AwsLambdaFunction_0"
+  },
+  "state": {
+    "is_set": true,
+    "data": "deleting"
+  },
+  "environment": {
+    "is_set": true,
+    "data": null
+  },
+  "entries": {
+    "is_set": true,
+    "data": null
+  },
+  "name": {
+    "is_set": true,
+    "data": "my_function"
+  },
+  "handler": {
+    "is_set": true,
+    "data": "index.handler"
+  },
+  "memory": {
+    "is_set": true,
+    "data": 128
+  },
+  "memory_range": {
+    "is_set": true,
+    "data": null
+  },
+  "runtime": {
+    "is_set": true,
+    "data": "nodejs12.x"
+  },
+  "alias": {
+    "is_set": true,
+    "data": "my_function_v0_1"
+  },
+  "concurrency_range": {
+    "is_set": true,
+    "data": null
+  },
+  "statement_id": {
+    "is_set": true,
+    "data": null
+  },
+  "zip_file": {
+    "is_set": true,
+    "data": null
+  },
+  "policy_file": {
+    "is_set": false,
+    "data": null
+  },
+  "timeout": {
+    "is_set": true,
+    "data": 3
+  },
+  "concurrency": {
+    "is_set": true,
+    "data": null
+  },
+  "env_vars": {
+    "is_set": true,
+    "data": null
+  },
+  "arn": {
+    "is_set": true,
+    "data": "arn:aws:lambda:eu-central-1:557233580830:function:my_function:my_function_v0_1"
+  },
+  "region": {
+    "is_set": true,
+    "data": "eu-central-1"
+  }
+}

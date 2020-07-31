@@ -1,0 +1,41 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+imports:
+  - file: radoncapabilities__Invocable.tosca
+    namespace_uri: radon.capabilities
+    namespace_prefix: radoncapabilities
+node_types:
+  radon.nodes.abstract.Function:
+    derived_from: tosca.nodes.Root
+    metadata:
+      abstract: "false"
+      final: "false"
+      targetNamespace: "radon.nodes.abstract"
+    properties:
+      environment:
+        type: map
+        required: false
+        status: supported
+      entries:
+        type: string
+        required: false
+        status: supported
+      name:
+        type: string
+        required: true
+        status: supported
+    requirements:
+      - host:
+          capability: tosca.capabilities.Container
+          node: radon.nodes.abstract.CloudPlatform
+          relationship: tosca.relationships.HostedOn
+          occurrences: [ 1, 1 ]
+# Error: '[ReferenceWrapper] Invalid reference relationship_types/radon.relationships.abstract.ConnectsTo'
+#      - endpoint:
+#          capability: tosca.capabilities.Endpoint
+#          relationship: radon.relationships.abstract.ConnectsTo
+#          occurrences: [ 1, UNBOUNDED ]
+    capabilities:
+      invocable:
+        occurrences: [ 0, UNBOUNDED ]
+        type: radon.capabilities.Invocable
