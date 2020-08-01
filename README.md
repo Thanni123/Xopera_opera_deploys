@@ -1,2 +1,2 @@
-# API_deploy
-Script for API Gateway deploy with xopera opera.
+# Xopera_opera_deploys
+Scripts for deploying different use cases with xopera opera.
