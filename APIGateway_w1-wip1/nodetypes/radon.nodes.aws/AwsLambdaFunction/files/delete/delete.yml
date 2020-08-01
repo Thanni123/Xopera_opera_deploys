@@ -12,7 +12,7 @@
 
     - name: "Delete role of Lambda function on AWS : {{ function_name }}"
       iam_role:
-        name: "{{ aws_role }}"
+        name: 'Lambda-role'
         assume_role_policy_document: "{{ lookup('file', lookup('fileglob', policy_file_matched_subdirectory.files[0].path)) }}"
         state: absent
 
@@ -28,6 +28,6 @@
       lambda:
         name: "{{ function_name }}"
         region: "{{ aws_region }}"
-        role: "{{ aws_role }}"
+        role: 'Lambda-role'
         handler: image_resize.lambda_handler
         state: absent

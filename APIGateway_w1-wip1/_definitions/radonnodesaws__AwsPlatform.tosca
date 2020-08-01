@@ -25,7 +25,7 @@ node_types:
 # Error: '[ReferenceWrapper] Invalid reference node_types/radon.nodes.aws.AwsS3Bucket'
 # Error: '[ReferenceWrapper] Invalid reference node_types/radon.nodes.VM.EC2'
 #        valid_source_types: [ radon.nodes.aws.AwsLambdaFunction, radon.nodes.aws.AwsS3Bucket, radon.nodes.VM.EC2 ]
-        valid_source_types: [ radon.nodes.aws.AwsLambdaFunction ]
+        valid_source_types: [ radon.nodes.aws.AwsLambdaFunction, radon.nodes.aws.APIGateway ]
         type: tosca.capabilities.Container
     interfaces:
       Standard:

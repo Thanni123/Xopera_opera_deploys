@@ -9,6 +9,9 @@ imports:
   - file: radonnodesaws__AwsPlatform.tosca
     namespace_uri: radon.nodes.aws
     namespace_prefix: radonnodesaws
+  - file: radonnodesaws__AwsApiGateway.tosca
+    namespace_uri: radon.nodes.aws
+    namespace_prefix: radonnodesaws
 topology_template:
   node_templates:
     AwsLambdaFunction:
@@ -47,6 +50,30 @@ topology_template:
       properties:
         name: "AWS"
         region: "eu-central-1"
+    AwsApiGateway:
+      type: radon.nodes.aws.APIGateway
+      metadata:
+        x: "885"
+        y: "350"
+        displayName: "AwsApiGateway"
+      properties:
+        role_name: "Lambda-role"
+        aws_region: "eu-central-1"
+        function_name: "my_function"
+        api_gateway_resource_uri: null
+        api_gateway_title: "my_api_gateway"
+        function_arn: "blabla"
+      requirements:
+        - host:
+            node: AwsPlatform
+            relationship: con_HostedOn_0
+            capability: host
+        - receives_notification:
+            node: AwsLambdaFunction
+            relationship: con_ReceivedNotificationFrom_0
+            capability: receives_notification
   relationship_templates:
     con_HostedOn_0:
       type: tosca.relationships.HostedOn
+    con_ReceivedNotificationFrom_0:
+      type: tosca.relationships.DependsOn

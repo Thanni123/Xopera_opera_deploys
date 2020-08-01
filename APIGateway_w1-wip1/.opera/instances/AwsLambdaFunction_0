@@ -9,7 +9,7 @@
   },
   "state": {
     "is_set": true,
-    "data": "deleting"
+    "data": "started"
   },
   "environment": {
     "is_set": true,
@@ -49,15 +49,15 @@
   },
   "statement_id": {
     "is_set": true,
-    "data": null
+    "data": "lambda-c776234f-0579-4b34-a01d-49fdb4fcb5b4"
   },
   "zip_file": {
     "is_set": true,
-    "data": null
+    "data": "X-test-ImageRes.zip"
   },
   "policy_file": {
-    "is_set": false,
-    "data": null
+    "is_set": true,
+    "data": "policy.json"
   },
   "timeout": {
     "is_set": true,
