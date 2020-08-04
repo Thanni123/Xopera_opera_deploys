@@ -1,0 +1,38 @@
+{
+  "tosca_name": {
+    "is_set": true,
+    "data": "AwsS3Bucket_2"
+  },
+  "tosca_id": {
+    "is_set": true,
+    "data": "AwsS3Bucket_2_0"
+  },
+  "state": {
+    "is_set": true,
+    "data": "creating"
+  },
+  "name": {
+    "is_set": true,
+    "data": "h2020radon-examples-target-bucket"
+  },
+  "size": {
+    "is_set": true,
+    "data": "0 MB"
+  },
+  "maxsize": {
+    "is_set": true,
+    "data": 2
+  },
+  "entries": {
+    "is_set": false,
+    "data": null
+  },
+  "bucket_name": {
+    "is_set": false,
+    "data": null
+  },
+  "region": {
+    "is_set": false,
+    "data": null
+  }
+}
