@@ -1,0 +1,48 @@
+basePath: /production
+host: h8xiq5rvv8.execute-api.{{ aws_region }}.amazonaws.com
+info:
+  title: '{{ api_gateway_title }}'
+  version: '2020-02-05T12:17:38Z'
+paths:
+  /:
+    delete:
+      description: '{{ lambda_description }}'
+      operationId: '{{ lambda_id }}'
+      parameters:
+      - in: header
+        name: api_key
+        required: 'false'
+        type: string
+      - description: ''
+        format: int64
+        in: path
+        name: ''
+        required: 'true'
+        type: integer
+      produces:
+      - application/json
+      - application/xml
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Not found
+      summary: '{{ lambda_description }}'
+      tags:
+      - /
+      x-amazon-apigateway-integration:
+        contentHandling: CONVERT_TO_TEXT
+        credentials: '{{ aws_role }}'
+        httpMethod: POST
+        passthroughBehavior: when_no_match
+        responses:
+          default:
+            statusCode: '200'
+        type: aws
+        uri: '{{ api_gateway_resource_uri_override|default(api_gateway_resource_uri)
+          }}'
+schemes:
+- https
+swagger: '2.0'

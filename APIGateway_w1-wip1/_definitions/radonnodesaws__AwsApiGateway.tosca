@@ -14,6 +14,8 @@ node_types:
     attributes:
       arn:
         type: string
+#      function_arn:
+#        type: string
     properties:
       role_name:
         type: string
@@ -38,11 +40,6 @@ node_types:
       api_gateway_resource_uri:
         type: string
         description: URI of the resource to connect to API Gateway
-        required: true
-        status: supported
-      function_arn:
-        type: string
-        description: Amazon's resource name for this Lambda function
         required: true
         status: supported
     requirements:

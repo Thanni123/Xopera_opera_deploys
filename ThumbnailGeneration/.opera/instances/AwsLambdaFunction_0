@@ -1,0 +1,82 @@
+{
+  "tosca_name": {
+    "is_set": true,
+    "data": "AwsLambdaFunction"
+  },
+  "tosca_id": {
+    "is_set": true,
+    "data": "AwsLambdaFunction_0"
+  },
+  "state": {
+    "is_set": true,
+    "data": "initial"
+  },
+  "environment": {
+    "is_set": true,
+    "data": null
+  },
+  "entries": {
+    "is_set": true,
+    "data": null
+  },
+  "name": {
+    "is_set": true,
+    "data": "my_resizer"
+  },
+  "handler": {
+    "is_set": true,
+    "data": "index.handler"
+  },
+  "memory": {
+    "is_set": true,
+    "data": 128
+  },
+  "memory_range": {
+    "is_set": true,
+    "data": null
+  },
+  "runtime": {
+    "is_set": true,
+    "data": "nodejs12.x"
+  },
+  "alias": {
+    "is_set": true,
+    "data": "my_resizer_v0_1"
+  },
+  "concurrency_range": {
+    "is_set": true,
+    "data": null
+  },
+  "statement_id": {
+    "is_set": true,
+    "data": "lambda-c776234f-0579-4b34-a01d-49fdb4fcb5b4"
+  },
+  "zip_file": {
+    "is_set": true,
+    "data": "X-test-ImageRes.zip"
+  },
+  "policy_file": {
+    "is_set": true,
+    "data": "policy.json"
+  },
+  "timeout": {
+    "is_set": true,
+    "data": 3
+  },
+  "concurrency": {
+    "is_set": true,
+    "data": null
+  },
+  "env_vars": {
+    "is_set": true,
+    "data": null
+  },
+  "arn": {
+    "is_set": false,
+    "data": null
+  },
+  "region": {
+    "is_set": false,
+    "data": null
+  }
+}

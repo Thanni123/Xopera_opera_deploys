@@ -1,0 +1,113 @@
+---
+- hosts: localhost
+  gather_facts: no
+  vars:
+    - current_directory: "{{ lookup('env', 'PWD') }}"
+#Remove additional path when using xopera opera orchestrator for deployment
+    - addtional_path_parameter: '/Desktop/ToDo_deploy/'
+    - region: eu-central-1
+  tasks:
+    - name: Find policy.json by name
+      find:
+#>>REDEFINE THIS PATH LATER ON<<
+        paths: "{{ current_directory + addtional_path_parameter }}"
+#>>REDEFINE THIS PATH LATER ON<<
+        patterns: 'policy.json'
+        recurse: yes
+      register: policy_file_matched_subdirectory
+
+    - name: Delete Lambda AWS role
+      iam_role:
+        name: 'Lambda-role'
+        assume_role_policy_document: "{{ lookup('file', lookup('fileglob', policy_file_matched_subdirectory.files[0].path)) }}"
+        state: absent
+
+#-------------------------------
+
+    - name: Remove function alias name
+      lambda_alias:
+        function_name: 'create'
+        name: 'create-v0_1'
+        region: "{{ region }}"
+        state: absent
+      ignore_errors: yes
+
+    - name: Lambda function undeploy
+      lambda:
+        name: 'create'
+        region: "{{ region }}"
+        role: 'arn:aws:iam::557233580830:role/phong'
+        handler: todolist_create.lambda_handler
+        state: absent
+
+#-------------------------------
+
+    - name: Remove function alias name
+      lambda_alias:
+        function_name: 'update'
+        name: 'update-v0_1'
+        region: "{{ region }}"
+        state: absent
+      ignore_errors: yes
+
+    - name: Lambda function undeploy
+      lambda:
+        name: 'update'
+        region: "{{ region }}"
+        role: 'arn:aws:iam::557233580830:role/phong'
+        handler: todolist_update.lambda_handler
+        state: absent
+
+#-------------------------------
+
+    - name: Remove function alias name
+      lambda_alias:
+        function_name: 'delete'
+        name: 'delete-v0_1'
+        region: "{{ region }}"
+        state: absent
+      ignore_errors: yes
+
+    - name: Lambda function undeploy
+      lambda:
+        name: 'delete'
+        region: "{{ region }}"
+        role: 'arn:aws:iam::557233580830:role/phong'
+        handler: todolist_delete.lambda_handler
+        state: absent
+
+#-------------------------------
+
+    - name: Remove function alias name
+      lambda_alias:
+        function_name: 'list'
+        name: 'list-v0_1'
+        region: "{{ region }}"
+        state: absent
+      ignore_errors: yes
+
+    - name: Lambda function undeploy
+      lambda:
+        name: 'list'
+        region: "{{ region }}"
+        role: 'arn:aws:iam::557233580830:role/phong'
+        handler: todolist_list.lambda_handler
+        state: absent
+
+#-------------------------------
+
+    - name: Remove function alias name
+      lambda_alias:
+        function_name: 'list-all'
+        name: 'list-all-v0_1'
+        region: "{{ region }}"
+        state: absent
+      ignore_errors: yes
+
+    - name: Lambda function undeploy
+      lambda:
+        name: 'list-all'
+        region: "{{ region }}"
+        role: 'arn:aws:iam::557233580830:role/phong'
+        handler: todolist_list_all.lambda_handler
+        state: absent

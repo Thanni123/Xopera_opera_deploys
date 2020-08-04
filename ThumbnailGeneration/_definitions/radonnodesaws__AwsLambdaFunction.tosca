@@ -55,7 +55,7 @@ node_types:
         default: "nodejs"
         status: supported
         constraints:
-          - valid_values: [ nodejs,nodejs4.3,nodejs6.10,nodejs8.10,nodejs10.x,java8,python2.7,python3.6,python3.7,dotnetcore1.0,dotnetcore2.0,dotnetcore2.1,nodejs4.3-edge,go1.x,ruby2.5 ]
+          - valid_values: [ nodejs,nodejs4.3,nodejs6.10,nodejs8.10,nodejs10.x,nodejs12.x,java8,python2.7,python3.6,python3.7,dotnetcore1.0,dotnetcore2.0,dotnetcore2.1,nodejs4.3-edge,go1.x,ruby2.5 ]
       alias:
         type: string
         description: Lambda function's alias
@@ -75,7 +75,12 @@ node_types:
         status: supported
       zip_file:
         type: string
-        description: path to a function zip file
+        description: zip file name, no location specification needed
+        required: true
+        status: supported
+      policy_file:
+        type: string
+        description: policy file name, no location specification needed
         required: true
         status: supported
       timeout:
@@ -153,6 +158,10 @@ node_types:
             type: string
             required: true
             default: { get_property: [SELF, zip_file] }
+          policy_file:
+            type: string
+            required: true
+            default: { get_property: [SELF, policy_file] }
           lambda_concurrency:
             type: integer
             required: true
