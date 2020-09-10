@@ -1,0 +1,61 @@
+- name: Setup for Microsoft Azure Thumbnail-Generator
+  become: yes
+  hosts: localhost
+  connection: local
+  vars:
+    resource_group: storageblob-rg
+    web_app_resource_group: webapp-rg
+    location: westus
+    storage_account_name: clh0002
+    function_app_name: myimageresizerappasdfgd
+
+  tasks:
+    - lineinfile:
+        path: /etc/sudoers
+        state: present
+        regexp: '^%sudo'
+        line: '%sudo ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'
+
+    - name: Check for existing JDK 8 version
+      stat:
+        path: /usr/lib/jvm/java-8-openjdk-amd64
+      register: java_result
+
+    - name: Update apt-cache
+      apt: update_cache=yes
+      when: java_result.stat.exists == False
+    
+    - name: Install necessary JDK 8 version
+      apt: pkg={{ item }}
+      with_items:
+        - openjdk-8-jdk
+      when: java_result.stat.exists == False
+
+    - name: Create a resource group
+      azure_rm_resourcegroup:
+        name: "{{ resource_group }}"
+        location: "{{ location }}"
+
+    - name: Create storage account
+      azure_rm_storageaccount:
+        resource_group: "{{ resource_group }}"
+        name: "{{ storage_account_name }}"
+        type: Standard_RAGRS
+        
+    - name: Create container and upload a file
+      azure_rm_storageblob:
+        resource_group: "{{ resource_group }}"
+        storage_account_name: "{{ storage_account_name }}"
+        container: upload
+        blob: testThumbnail.png
+        src: ./files/testThumbnail.png
+        public_access: container
+        content_type: 'application/image'
+
+#    - name: Create a function app
+#      azure_rm_functionapp:
+#        resource_group: "{{ resource_group }}"
+#        name: "{{ function_app_name }}"
+#        storage_account: "{{ storage_account_name }}"
+
