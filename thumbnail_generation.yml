@@ -3,8 +3,7 @@
   hosts: localhost
   connection: local
   vars:
-    resource_group: storageblob-rg
-    web_app_resource_group: webapp-rg
+    resource_group: thumbnailgeneration-rg
     location: westus
     storage_account_name: clh0002
     function_app_name: myimageresizerappasdfgd
