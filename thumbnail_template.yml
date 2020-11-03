@@ -3,18 +3,31 @@
   vars:
     - current_directory: "{{ lookup('env','PWD') }}"
     - region: eu-central-1
-    - function_name: 
+    - function_name: image-resizer
+    - lambda_concurrency: null
   tasks:
+    # Note: Setup & configuration of AWS Plattform
+    - name: Install python module boto
+      pip:
+        name: boto
+        state: latest
+
     - name: Install python module boto3
       pip:
         name: boto3
         state: latest
-   
+
     - name: Install python module botocore
       pip:
         name: botocore
         state: latest
 
+    - name: Install python module awscli
+      pip:
+        name: awscli
+        state: latest
+
+    # Note: Setup & configuration of AWS Role
     - name: Create a role with description and tags
       iam_role:
         name: mynewrole
@@ -25,10 +38,10 @@
       register: iam_role_response
 
     # Note: Setup & configuration of first AWS Lambda function
-    - name: Create AWS Lambda function - "{{ function_name1 }}"
+    - name: Create AWS Lambda function - "{{ function_name }}"
       lambda:
-        name: "{{ function_name1 }}"
-        zip_file: "{{ lookup('fileglob','list.zip') }}"
+        name: "{{ function_name }}"
+        zip_file: "{{ lookup('fileglob','X-test-ImageRes.zip') }}"
         runtime: 'nodejs12.x'
         region: "{{ region }}"
         role: "{{ iam_role_response.arn }}"
@@ -36,41 +49,29 @@
         timeout: 3
         memory_size: 512
         environment_variables: null
-      register: lambda_info1
+      register: lambda_info
 
-    - name: Create function alias name - "{{ function_name1 }}"
+    - name: "Put concurrency of Lambda function on AWS : {{ function_name }}"
+      command: >-
+        aws lambda put-function-concurrency
+          --function-name {{ function_name }}
+          --reserved-concurrent-executions {{ lambda_concurrency }}
+          --region {{ aws_region }}
+      when: lambda_concurrency | d(False)
+
+    - name: Create function alias name - "{{ function_name }}"
       lambda_alias:
-        function_name: "{{ function_name1 }}"
-        name: "{{ function_name1 }}-v0_1"
+        function_name: "{{ function_name }}"
+        name: "{{ function_name }}-v0_1"
         region: "{{ region }}"
         state: present
-      register: alias_info1
-    
-    - name: Add invocation permission of Lambda function on AWS - "{{ function_name1 }}"
+      register: alias_info
+
+    - name: Add invocation permission of Lambda function on AWS - "{{ function_name }}"
       lambda_policy:
-        function_name: "{{ function_name1 }}"
-        statement_id: "lambda-myFunction-{{ function_name1 }}"
+        function_name: "{{ function_name }}"
+        statement_id: "lambda-myFunction-{{ function_name }}"
         action: lambda:InvokeFunction
         region: "{{ region }}"
-        alias: "{{ function_name1 }}-v0_1"
+        alias: "{{ function_name }}-v0_1"
         principal: "s3.amazonaws.com"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
