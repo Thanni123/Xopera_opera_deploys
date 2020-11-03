@@ -2,8 +2,8 @@
 - hosts: localhost
   vars:
     - current_directory: "{{ lookup('env','PWD') }}"
-    - bucket_name1: input
-    - bucket_name2: output
+    - bucket_name1: input-bucket-for-thumbnail-generation-app
+    - bucket_name2: output-bucket-for-thumbnail-generation-app
     - region: eu-central-1
     - function_name: image-resizer
     - lambda_concurrency: null
