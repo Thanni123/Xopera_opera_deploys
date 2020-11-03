@@ -3,8 +3,6 @@
   vars:
     - current_directory: "{{ lookup('env','PWD') }}"
     - region: eu-central-1
-    - function_name1: list
-    - function_name2: get
     - api_title: ToDo_List_API
     - api_description: API description for ToDo List API Application
     - api_version: "{{ lookup('pipe','date') }}"
@@ -13,7 +11,7 @@
       pip:
         name: boto3
         state: latest
-   
+
     - name: Install python module botocore
       pip:
         name: botocore
@@ -28,68 +26,6 @@
           -  arn:aws:iam::aws:policy/AWSLambdaFullAccess
           -  arn:aws:iam::aws:policy/AmazonAPIGatewayInvokeFullAccess
       register: iam_role_response
-
-    # Note: Setup & configuration of first AWS Lambda function
-    - name: Create AWS Lambda function - "{{ function_name1 }}"
-      lambda:
-        name: "{{ function_name1 }}"
-        zip_file: "{{ lookup('fileglob','list.zip') }}"
-        runtime: 'nodejs12.x'
-        region: "{{ region }}"
-        role: "{{ iam_role_response.arn }}"
-        handler: 'index.handler'
-        timeout: 3
-        memory_size: 512
-        environment_variables: null
-      register: lambda_info1
-
-    - name: Create function alias name - "{{ function_name1 }}"
-      lambda_alias:
-        function_name: "{{ function_name1 }}"
-        name: "{{ function_name1 }}-v0_1"
-        region: "{{ region }}"
-        state: present
-      register: alias_info1
-    
-    - name: Add invocation permission of Lambda function on AWS - "{{ function_name1 }}"
-      lambda_policy:
-        function_name: "{{ function_name1 }}"
-        statement_id: "lambda-myFunction-{{ function_name1 }}"
-        action: lambda:InvokeFunction
-        region: "{{ region }}"
-        alias: "{{ function_name1 }}-v0_1"
-        principal: "s3.amazonaws.com"
-
-    # Note: Setup & configuration of second AWS Lambda function
-    - name: Create AWS Lambda function - "{{ function_name2 }}"
-      lambda:
-        name: "{{ function_name2 }}"
-        zip_file: "{{ lookup('fileglob','get.zip') }}"
-        runtime: 'nodejs12.x'
-        region: "{{ region }}"
-        role: "{{ iam_role_response.arn }}"
-        handler: 'index.handler'
-        timeout: 3
-        memory_size: 512
-        environment_variables: null
-      register: lambda_info2
-
-    - name: Create function alias name - "{{ function_name2 }}"
-      lambda_alias:
-        function_name: "{{ function_name2 }}"
-        name: "{{ function_name2 }}-v0_1"
-        region: "{{ region }}"
-        state: present
-      register: alias_info2
-
-    - name: Add invocation permission of Lambda function on AWS - "{{ function_name2 }}"
-      lambda_policy:
-        function_name: "{{ function_name2 }}"
-        statement_id: "lambda-myFunction-{{ function_name2 }}"
-        action: lambda:InvokeFunction
-        region: "{{ region }}"
-        alias: "{{ function_name2 }}-v0_1"
-        principal: "s3.amazonaws.com"
 
     # Note: Setup & configuration of AWS API Gateway
     - name: Find swagger.yaml by name
@@ -124,23 +60,3 @@
         swagger_file: "{{ current_directory }}/swagger.json"
         stage: production
         region: "{{ region }}"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
