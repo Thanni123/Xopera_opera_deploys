@@ -9,6 +9,12 @@
     - function_name4: update
     - function_name5: delete
   tasks:
+    # Note: Setup & configuration of AWS Plattform
+    - name: Install python module boto
+      pip:
+        name: boto
+        state: latest
+
     - name: Install python module boto3
       pip:
         name: boto3
@@ -17,6 +23,11 @@
     - name: Install python module botocore
       pip:
         name: botocore
+        state: latest
+
+    - name: Install python module awscli
+      pip:
+        name: awscli
         state: latest
 
     - name: Create a role with description and tags
