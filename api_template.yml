@@ -1,0 +1,146 @@
+# Note: Service Template for deploying ToDo List API Gateway Application
+- hosts: localhost
+  vars:
+    - current_directory: "{{ lookup('env','PWD') }}"
+    - region: eu-central-1
+    - function_name1: list
+    - function_name2: get
+    - api_title: ToDo_List_API
+    - api_description: API description for ToDo List API Application
+    - api_version: "{{ lookup('pipe','date') }}"
+  tasks:
+    - name: Install python module boto3
+      pip:
+        name: boto3
+        state: latest
+   
+    - name: Install python module botocore
+      pip:
+        name: botocore
+        state: latest
+
+    - name: Create a role with description and tags
+      iam_role:
+        name: mynewrole
+        state: present
+        assume_role_policy_document: "{{ lookup('file','policy.json') }}"
+        managed_policy:
+          -  arn:aws:iam::aws:policy/AWSLambdaFullAccess
+          -  arn:aws:iam::aws:policy/AmazonAPIGatewayInvokeFullAccess
+      register: iam_role_response
+
+    # Note: Setup & configuration of first AWS Lambda function
+    - name: Create AWS Lambda function - "{{ function_name1 }}"
+      lambda:
+        name: "{{ function_name1 }}"
+        zip_file: "{{ lookup('fileglob','list.zip') }}"
+        runtime: 'nodejs12.x'
+        region: "{{ region }}"
+        role: "{{ iam_role_response.arn }}"
+        handler: 'index.handler'
+        timeout: 3
+        memory_size: 512
+        environment_variables: null
+      register: lambda_info1
+
+    - name: Create function alias name - "{{ function_name1 }}"
+      lambda_alias:
+        function_name: "{{ function_name1 }}"
+        name: "{{ function_name1 }}-v0_1"
+        region: "{{ region }}"
+        state: present
+      register: alias_info1
+    
+    - name: Add invocation permission of Lambda function on AWS - "{{ function_name1 }}"
+      lambda_policy:
+        function_name: "{{ function_name1 }}"
+        statement_id: "lambda-myFunction-{{ function_name1 }}"
+        action: lambda:InvokeFunction
+        region: "{{ region }}"
+        alias: "{{ function_name1 }}-v0_1"
+        principal: "s3.amazonaws.com"
+
+    # Note: Setup & configuration of second AWS Lambda function
+    - name: Create AWS Lambda function - "{{ function_name2 }}"
+      lambda:
+        name: "{{ function_name2 }}"
+        zip_file: "{{ lookup('fileglob','get.zip') }}"
+        runtime: 'nodejs12.x'
+        region: "{{ region }}"
+        role: "{{ iam_role_response.arn }}"
+        handler: 'index.handler'
+        timeout: 3
+        memory_size: 512
+        environment_variables: null
+      register: lambda_info2
+
+    - name: Create function alias name - "{{ function_name2 }}"
+      lambda_alias:
+        function_name: "{{ function_name2 }}"
+        name: "{{ function_name2 }}-v0_1"
+        region: "{{ region }}"
+        state: present
+      register: alias_info2
+
+    - name: Add invocation permission of Lambda function on AWS - "{{ function_name2 }}"
+      lambda_policy:
+        function_name: "{{ function_name2 }}"
+        statement_id: "lambda-myFunction-{{ function_name2 }}"
+        action: lambda:InvokeFunction
+        region: "{{ region }}"
+        alias: "{{ function_name2 }}-v0_1"
+        principal: "s3.amazonaws.com"
+
+    # Note: Setup & configuration of AWS API Gateway
+    - name: Find swagger.yaml by name
+      find:
+        paths: "{{ current_directory }}"
+        patterns: 'swagger.yaml,swagger.json'
+        recurse: yes
+      register: matched_swagger_file
+
+    - debug:
+        msg: "Founded swagger file: {{ matched_swagger_file.files[0].path }}"
+
+    - name: Check that the swagger file exists
+      stat:
+        path: "{{ matched_swagger_file.files[0].path }}"
+      register: swagger_spec
+
+    - name: Remove the old swagger specification
+      file:
+        path: "{{ matched_swagger_file.files[0].path }}"
+        state: absent
+      when: swagger_spec.stat.exists
+
+    - name: Set the basis for API
+      copy:
+        content: '{ "swagger": "2.0", "info": {"title": "{{ api_title }}", "description": "{{ api_description }}", "version": "{{ api_version }}" }, "paths": {}}'
+        dest: "{{ current_directory }}/swagger.json"
+
+    - name: Setup AWS API Gateway setup on AWS and deploy API definition
+      aws_api_gateway:
+        state: present
+        swagger_file: "{{ current_directory }}/swagger.json"
+        stage: production
+        region: "{{ region }}"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
