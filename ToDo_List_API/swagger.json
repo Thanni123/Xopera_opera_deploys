@@ -1,1 +1,1 @@
-{"swagger": "2.0", "info": {"title": "ToDo_List_API", "description": "API description for ToDo List API Application", "version": "Wed Nov  4 06:34:25 CET 2020"}, "paths": {"/todo": {}}}
+{"swagger": "2.0", "info": {"title": "ToDo_List_API", "description": "API description for ToDo List API Application", "version": "Wed Nov  4 17:36:59 CET 2020"}, "paths": {"/todo": []}}
