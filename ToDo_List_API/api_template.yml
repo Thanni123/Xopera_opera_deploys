@@ -3,10 +3,16 @@
   vars:
     - current_directory: "{{ lookup('env','PWD') }}"
     - region: eu-central-1
+    - function_name1: list
+    - zip_file1: list.zip
     - api_title: ToDo_List_API
     - api_description: API description for ToDo List API Application
     - api_version: "{{ lookup('pipe','date') }}"
     - uri: arn:aws:apigateway:us-east-1:lambda:path
+    - create_post_method: False
+    - create_put_method: False
+    - create_delete_method: False
+    - create_get_method: False
   tasks:
     # Note: Setup & configuration of AWS Plattform
     - name: Install python module boto
@@ -39,6 +45,44 @@
           -  arn:aws:iam::aws:policy/AmazonAPIGatewayInvokeFullAccess
       register: iam_role_response
 
+    # Note: Setup & configuration of first AWS Lambda function
+    - name: Find "{{ zip_file1 }}"
+      find:
+        paths: "{{ current_directory }}"
+        patterns: "{{ zip_file1 }}"
+        recurse: yes
+      register: matched_zip_file
+
+    - name: Create AWS Lambda function - "{{ function_name1 }}"
+      lambda:
+        name: "{{ function_name1 }}"
+        zip_file: "{{ lookup('fileglob', matched_zip_file.files[0].path) }}"
+        runtime: 'nodejs12.x'
+        region: "{{ region }}"
+        role: "{{ iam_role_response.arn }}"
+        handler: 'index.handler'
+        timeout: 3
+        memory_size: 512
+        environment_variables: null
+      register: lambda_info1
+
+    - name: Create function alias name - "{{ function_name1 }}"
+      lambda_alias:
+        function_name: "{{ function_name1 }}"
+        name: "{{ function_name1 }}-v0_1"
+        region: "{{ region }}"
+        state: present
+      register: alias_info1
+
+    - name: Add invocation permission of Lambda function on AWS - "{{ function_name1 }}"
+      lambda_policy:
+        function_name: "{{ function_name1 }}"
+        statement_id: "lambda-myFunction-{{ function_name1 }}"
+        action: lambda:InvokeFunction
+        region: "{{ region }}"
+        alias: "{{ function_name1 }}-v0_1"
+        principal: "s3.amazonaws.com"
+
     # Note: Setup & configuration of AWS API Gateway
     - name: Find swagger.yaml by name
       find:
@@ -67,13 +111,13 @@
         dest: "{{ current_directory }}/swagger.json"
 
     - debug:
-        msg: "Credential: {{ iam_role_response.arn }}"
+        msg: "Debug info credential: {{ iam_role_response.arn }}"
 
     - debug:
-        msg: "Uri: {{ uri }}"
+        msg: "Debug info uri: {{ uri }}"
 
     - name: Run swagger_gen.py script for adding methods to swagger file
-      script: /home/phong/Xopera_opera_deploys/ToDo_List_API/swagger_gen.py {{ iam_role_response.arn }} {{ uri }} True False False False
+      script: /home/phong/Xopera_opera_deploys/ToDo_List_API/swagger_gen.py {{ iam_role_response.arn }} {{ uri }} {{ create_post_method }} {{ create_put_method }} {{ create_delete_method }} {{ create_get_method }}
       args:
         executable: python3
 
