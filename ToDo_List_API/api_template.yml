@@ -117,11 +117,7 @@
         msg: "Debug info uri: {{ uri }}"
 
     - name: Run swagger_gen.py script for adding methods to swagger file
-<<<<<<< HEAD
       script: /home/phong/Xopera_opera_deploys/ToDo_List_API/swagger_gen.py {{ iam_role_response.arn }} {{ uri }} {{ create_post_method }} {{ create_put_method }} {{ create_delete_method }} {{ create_get_method }}
-=======
-      script: swagger_gen.py {{ iam_role_response.arn }} {{ uri }} True False False False
->>>>>>> 13e83e827d3c28753dbdadcf8082be6629eb3f48
       args:
         executable: python3
 
