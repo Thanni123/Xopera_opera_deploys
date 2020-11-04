@@ -16,11 +16,6 @@
         name: azure-functions
         state: present
 
-    - name: install dotnet
-      pip:
-        name: dotnet
-        state: present
-
     - name: Create a resource group
       azure_rm_resourcegroup:
         name: "{{ APP_RESOURCE_GROUP }}"
