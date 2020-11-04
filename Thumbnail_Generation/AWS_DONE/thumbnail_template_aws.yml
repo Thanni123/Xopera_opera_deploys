@@ -1,4 +1,4 @@
-# Note: Service Template for deploying ToDo List API Gateway Application
+# Note: Service Template for deploying Thumbnail Generation Application
 - hosts: localhost
   vars:
     - current_directory: "{{ lookup('env','PWD') }}"
