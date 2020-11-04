@@ -62,7 +62,7 @@
 
     - name: Set the basis for API
       copy:
-        content: '{ "swagger": "2.0", "info": {"title": "{{ api_title }}", "description": "{{ api_description }}", "version": "{{ api_version }}" }, "paths": {"/todo":}'
+        content: '{ "swagger": "2.0", "info": {"title": "{{ api_title }}", "description": "{{ api_description }}", "version": "{{ api_version }}" }, "paths": {"/todo": {}}}'
         dest: "{{ current_directory }}/swagger.json"
 
     - name: Setup AWS API Gateway setup on AWS and deploy API definition
