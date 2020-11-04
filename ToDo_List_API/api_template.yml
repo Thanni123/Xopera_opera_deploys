@@ -65,9 +65,13 @@
         content: '{ "swagger": "2.0", "info": {"title": "{{ api_title }}", "description": "{{ api_description }}", "version": "{{ api_version }}" }, "paths": {"/todo": []}}'
         dest: "{{ current_directory }}/swagger.json"
 
-    - name: Setup AWS API Gateway setup on AWS and deploy API definition
-      aws_api_gateway:
-        state: present
-        swagger_file: "{{ current_directory }}/swagger.json"
-        stage: production
-        region: "{{ region }}"
+    - name: Run swagger_gen.py script for adding methods to swagger file
+      script:
+        cmd: swagger_gen.py bla bla True True
+
+#    - name: Setup AWS API Gateway setup on AWS and deploy API definition
+#      aws_api_gateway:
+#        state: present
+#        swagger_file: "{{ current_directory }}/swagger.json"
+#        stage: production
+#        region: "{{ region }}"
