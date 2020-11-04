@@ -73,7 +73,7 @@
         msg: "Uri: {{ uri }}"
 
     - name: Run swagger_gen.py script for adding methods to swagger file
-      script: /home/phong/Xopera_opera_deploys/ToDo_List_API/swagger_gen.py {{ iam_role_response.arn }} {{ uri }} True False False False
+      script: swagger_gen.py {{ iam_role_response.arn }} {{ uri }} True False False False
       args:
         executable: python3
 
