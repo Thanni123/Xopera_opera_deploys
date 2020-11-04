@@ -8,6 +8,11 @@
     - function_name3: create
     - function_name4: update
     - function_name5: delete
+    - zip_file1: list.zip
+    - zip_file2: get.zip
+    - zip_file3: create.zip
+    - zip_file4: update.zip
+    - zip_file5: delete.zip
   tasks:
     # Note: Setup & configuration of AWS Plattform
     - name: Install python module boto
@@ -41,10 +46,17 @@
       register: iam_role_response
 
     # Note: Setup & configuration of first AWS Lambda function
+    - name: Find "{{ zip_file1 }}"
+      find:
+        paths: "{{ current_directory }}"
+        patterns: "{{ zip_file1 }}"
+        recurse: yes
+      register: matched_zip_file1
+
     - name: Create AWS Lambda function - "{{ function_name1 }}"
       lambda:
         name: "{{ function_name1 }}"
-        zip_file: "{{ lookup('fileglob','list.zip') }}"
+        zip_file: "{{ lookup('fileglob', matched_zip_file1.files[0].path) }}"
         runtime: 'nodejs12.x'
         region: "{{ region }}"
         role: "{{ iam_role_response.arn }}"
@@ -72,10 +84,17 @@
         principal: "s3.amazonaws.com"
 
     # Note: Setup & configuration of second AWS Lambda function
+    - name: Find "{{ zip_file2 }}"
+      find:
+        paths: "{{ current_directory }}"
+        patterns: "{{ zip_file2 }}"
+        recurse: yes
+      register: matched_zip_file2
+
     - name: Create AWS Lambda function - "{{ function_name2 }}"
       lambda:
         name: "{{ function_name2 }}"
-        zip_file: "{{ lookup('fileglob','get.zip') }}"
+        zip_file: "{{ lookup('fileglob', matched_zip_file2.files[0].path) }}"
         runtime: 'nodejs12.x'
         region: "{{ region }}"
         role: "{{ iam_role_response.arn }}"
@@ -103,10 +122,17 @@
         principal: "s3.amazonaws.com"
 
     # Note: Setup & configuration of third AWS Lambda function
+    - name: Find "{{ zip_file3 }}"
+      find:
+        paths: "{{ current_directory }}"
+        patterns: "{{ zip_file3 }}"
+        recurse: yes
+      register: matched_zip_file3
+
     - name: Create AWS Lambda function - "{{ function_name3 }}"
       lambda:
         name: "{{ function_name3 }}"
-        zip_file: "{{ lookup('fileglob','create.zip') }}"
+        zip_file: "{{ lookup('fileglob', matched_zip_file3.files[0].path) }}"
         runtime: 'nodejs12.x'
         region: "{{ region }}"
         role: "{{ iam_role_response.arn }}"
@@ -134,10 +160,17 @@
         principal: "s3.amazonaws.com"
 
     # Note: Setup & configuration of fourth AWS Lambda function
+    - name: Find "{{ zip_file4 }}"
+      find:
+        paths: "{{ current_directory }}"
+        patterns: "{{ zip_file4 }}"
+        recurse: yes
+      register: matched_zip_file4
+
     - name: Create AWS Lambda function - "{{ function_name4 }}"
       lambda:
         name: "{{ function_name4 }}"
-        zip_file: "{{ lookup('fileglob','update.zip') }}"
+        zip_file: "{{ lookup('fileglob', matched_zip_file4.files[0].path) }}"
         runtime: 'nodejs12.x'
         region: "{{ region }}"
         role: "{{ iam_role_response.arn }}"
@@ -165,10 +198,17 @@
         principal: "s3.amazonaws.com"
 
     # Note: Setup & configuration of fifth AWS Lambda function
+    - name: Find "{{ zip_file5 }}"
+      find:
+        paths: "{{ current_directory }}"
+        patterns: "{{ zip_file5 }}"
+        recurse: yes
+      register: matched_zip_file5
+
     - name: Create AWS Lambda function - "{{ function_name5 }}"
       lambda:
         name: "{{ function_name5 }}"
-        zip_file: "{{ lookup('fileglob','delete.zip') }}"
+        zip_file: "{{ lookup('fileglob', matched_zip_file5.files[0].path) }}"
         runtime: 'nodejs12.x'
         region: "{{ region }}"
         role: "{{ iam_role_response.arn }}"
