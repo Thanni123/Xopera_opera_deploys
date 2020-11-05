@@ -8,7 +8,7 @@
     - api_title: ToDo_List_API
     - api_description: API description for ToDo List API Application
     - api_version: "{{ lookup('pipe','date') }}"
-    - uri: arn:aws:apigateway:{{ region }}:lambda:path/2015-03-31/functions/{{ lambda_info1.arn }}
+    - uri: arn:aws:apigateway:{{ region }}:lambda:path/2015-03-31/functions/{{ alias_info.alias_arn }}
     - create_post_method: False
     - create_put_method: False
     - create_delete_method: False
@@ -64,7 +64,7 @@
         timeout: 3
         memory_size: 512
         environment_variables: null
-      register: lambda_info1
+      register: lambda_info
 
     - name: Create function alias name - "{{ function_name1 }}"
       lambda_alias:
@@ -72,7 +72,7 @@
         name: "{{ function_name1 }}-v0_1"
         region: "{{ region }}"
         state: present
-      register: alias_info1
+      register: alias_info
 
     - name: Add invocation permission of Lambda function on AWS - "{{ function_name1 }}"
       lambda_policy:
@@ -114,12 +114,15 @@
         msg: "Debug info credential: {{ iam_role_response.arn }}"
 
     - debug:
-        msg: "Debug info uri: arn:aws:apigateway:{{ region }}:lambda:path/2015-03-31/functions/{{ lambda_info1.arn }}"
+        msg: "Debug info - list lambda function arn: {{ uri }}"
 
-    - name: Run swagger_gen.py script for adding methods to swagger file
-      script: /home/phong/Xopera_opera_deploys/ToDo_List_API/swagger_gen.py {{ iam_role_response.arn }} arn:aws:apigateway:{{ region }}:lambda:path/2015-03-31/functions/{{ lambda_info1.arn }} {{ create_post_method }} {{ create_put_method }} {{ create_delete_method }} {{ create_get_method }}
-      args:
-        executable: python3
+#    - debug:
+#        msg: "Debug info uri: arn:aws:apigateway:{{ region }}:lambda:path/2015-03-31/functions/{{ lambda_info1.arn }}"
+
+#    - name: Run swagger_gen.py script for adding methods to swagger file
+#      script: /home/phong/Xopera_opera_deploys/ToDo_List_API/swagger_gen.py {{ iam_role_response.arn }} arn:aws:apigateway:{{ region }}:lambda:path/2015-03-31/functions/{{ lambda_info1.arn }} {{ create_post_method }} {{ create_put_method }} {{ create_delete_method }} {{ create_get_method }}
+#      args:
+#        executable: python3
 
 #    - name: Setup AWS API Gateway setup on AWS and deploy API definition
 #      aws_api_gateway:
