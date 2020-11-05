@@ -8,7 +8,7 @@
     - api_title: ToDo_List_API
     - api_description: API description for ToDo List API Application
     - api_version: "{{ lookup('pipe','date') }}"
-    - uri: arn:aws:apigateway:us-east-1:lambda:path
+    - uri: arn:aws:apigateway:{{ region }}:lambda:path/2015-03-31/functions/{{ lambda_info1.arn }}
     - create_post_method: False
     - create_put_method: False
     - create_delete_method: False
