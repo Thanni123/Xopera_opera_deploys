@@ -121,9 +121,9 @@
       args:
         executable: python3
 
-    - name: Setup AWS API Gateway setup on AWS and deploy API definition
-      aws_api_gateway:
-        state: present
-        swagger_file: "{{ current_directory }}/swagger.json"
-        stage: production
-        region: "{{ region }}"
+#    - name: Setup AWS API Gateway setup on AWS and deploy API definition
+#      aws_api_gateway:
+#        state: present
+#        swagger_file: "{{ current_directory }}/swagger.json"
+#        stage: production
+#        region: "{{ region }}"
