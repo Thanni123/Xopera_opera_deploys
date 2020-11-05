@@ -4,6 +4,8 @@
     APP_RESOURCE_GROUP: myResourceGroup
     APP_STORAGE_ACCOUNT: myStorageAccount
     REGION: germanywest
+    user_name: thanhphongtruong@live.de
+    password: berti1000
   tasks:
     # Note: Setup & configuration of Azure Plattform
     - name: install azure-cli
@@ -15,6 +17,12 @@
       pip:
         name: azure-functions
         state: present
+
+    - name: azure login
+      command: >
+         az login
+         -u "{{ user_name }}"
+         -p "{{ password }}"
 
     - name: Create a resource group
       azure_rm_resourcegroup:
