@@ -140,7 +140,7 @@
         timeout: 3
         memory_size: 512
         environment_variables: null
-      register: lambda_info2
+      register: lambda_info3
 
     - name: Create function alias name - "{{ function_name3 }}"
       lambda_alias:
@@ -148,7 +148,7 @@
         name: "{{ function_name3 }}-v0_1"
         region: "{{ region }}"
         state: present
-      register: alias_info2
+      register: alias_info3
 
     - name: Add invocation permission of Lambda function on AWS - "{{ function_name3 }}"
       lambda_policy:
@@ -178,7 +178,7 @@
         timeout: 3
         memory_size: 512
         environment_variables: null
-      register: lambda_info2
+      register: lambda_info4
 
     - name: Create function alias name - "{{ function_name4 }}"
       lambda_alias:
@@ -186,7 +186,7 @@
         name: "{{ function_name4 }}-v0_1"
         region: "{{ region }}"
         state: present
-      register: alias_info2
+      register: alias_info4
 
     - name: Add invocation permission of Lambda function on AWS - "{{ function_name4 }}"
       lambda_policy:
@@ -216,7 +216,7 @@
         timeout: 3
         memory_size: 512
         environment_variables: null
-      register: lambda_info2
+      register: lambda_info5
 
     - name: Create function alias name - "{{ function_name5 }}"
       lambda_alias:
@@ -224,7 +224,7 @@
         name: "{{ function_name5 }}-v0_1"
         region: "{{ region }}"
         state: present
-      register: alias_info2
+      register: alias_info5
 
     - name: Add invocation permission of Lambda function on AWS - "{{ function_name5 }}"
       lambda_policy:
