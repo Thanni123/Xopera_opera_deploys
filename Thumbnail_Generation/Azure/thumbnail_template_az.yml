@@ -4,7 +4,7 @@
     APP_RESOURCE_GROUP: myResourceGroup
     APP_STORAGE_ACCOUNT: myStorageAccount
     REGION: germanywest
-    user_name: truong1942@outlook.de
+    user_name: truong1942@outlook.com
     password: 03011994Erfi
   tasks:
     # Note: Setup & configuration of Azure Plattform
