@@ -9,11 +9,11 @@
     - api_description: API description for ToDo List API Application
     - api_version: "{{ lookup('pipe','date') }}"
     - create_post_method: False
-    - uriPost: ''
+    - uriPost: arn:aws:apigateway:{{ region }}:lambda:path/2015-03-31/functions/{{ alias_info.alias_arn }}
     - create_put_method: False
-    - uriPut: ''
+    - uriPut: arn:aws:apigateway:{{ region }}:lambda:path/2015-03-31/functions/{{ alias_info.alias_arn }}
     - create_delete_method: False
-    - uriDelete: ''
+    - uriDelete: arn:aws:apigateway:{{ region }}:lambda:path/2015-03-31/functions/{{ alias_info.alias_arn }}
     - create_get_method: True
     - uriGet: arn:aws:apigateway:{{ region }}:lambda:path/2015-03-31/functions/{{ alias_info.alias_arn }}
   tasks:
@@ -117,7 +117,7 @@
         msg: "Debug info credential: {{ iam_role_response.arn }}"
 
     - name: Run swagger_gen.py script for adding methods to swagger file
-      script: /home/phong/Xopera_opera_deploys/ToDo_List_API/swagger_gen.py {{ iam_role_response.arn }} {{ create_post_method }} {{ uriPost }} {{ create_put_method }} {{ uriPut }} {{ create_delete_method }} {{ uriDelete }} {{ create_get_method }} {{ uriGet }}
+      script: swagger_gen.py {{ iam_role_response.arn }} {{ create_post_method }} {{ uriPost }} {{ create_put_method }} {{ uriPut }} {{ create_delete_method }} {{ uriDelete }} {{ create_get_method }} {{ uriGet }}
       args:
         executable: python3
 
