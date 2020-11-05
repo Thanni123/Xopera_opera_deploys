@@ -14,7 +14,7 @@
     - uriPut: ''
     - create_delete_method: False
     - uriDelete: ''
-    - create_get_method: False
+    - create_get_method: True
     - uriGet: arn:aws:apigateway:{{ region }}:lambda:path/2015-03-31/functions/{{ alias_info.alias_arn }}
   tasks:
     # Note: Setup & configuration of AWS Plattform
