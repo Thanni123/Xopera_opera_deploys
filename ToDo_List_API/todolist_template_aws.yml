@@ -16,11 +16,11 @@
     - api_title: ToDo_List_API
     - api_description: API description for ToDo List API Application
     - api_version: "{{ lookup('pipe','date') }}"
-    - create_post_method: False
+    - create_post_method: True
     - uriPost: arn:aws:apigateway:{{ region }}:lambda:path/2015-03-31/functions/{{ alias_info1.alias_arn }}
-    - create_put_method: False
+    - create_put_method: True
     - uriPut: arn:aws:apigateway:{{ region }}:lambda:path/2015-03-31/functions/{{ alias_info2.alias_arn }}
-    - create_delete_method: False
+    - create_delete_method: True
     - uriDelete: arn:aws:apigateway:{{ region }}:lambda:path/2015-03-31/functions/{{ alias_info3.alias_arn }}
     - create_get_method: True
     - uriGet: arn:aws:apigateway:{{ region }}:lambda:path/2015-03-31/functions/{{ alias_info4.alias_arn }}
