@@ -116,9 +116,6 @@
     - debug:
         msg: "Debug info credential: {{ iam_role_response.arn }}"
 
-    - debug:
-        msg: "Debug info - list lambda function arn: {{ uri }}"
-
     - name: Run swagger_gen.py script for adding methods to swagger file
       script: /home/phong/Xopera_opera_deploys/ToDo_List_API/swagger_gen.py {{ iam_role_response.arn }} {{ create_post_method }} {{ uriPost }} {{ create_put_method }} {{ uriPut }} {{ create_delete_method }} {{ uriDelete }} {{ create_get_method }} {{ uriGet }}
       args:
