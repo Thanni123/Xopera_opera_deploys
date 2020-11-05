@@ -114,10 +114,10 @@
         msg: "Debug info credential: {{ iam_role_response.arn }}"
 
     - debug:
-        msg: "Debug info uri: {{ uri }}"
+        msg: "Debug info uri: arn:aws:apigateway:{{ region }}:lambda:path/2015-03-31/functions/{{ lambda_info1.arn }}"
 
     - name: Run swagger_gen.py script for adding methods to swagger file
-      script: /home/phong/Xopera_opera_deploys/ToDo_List_API/swagger_gen.py {{ iam_role_response.arn }} {{ uri }} {{ create_post_method }} {{ create_put_method }} {{ create_delete_method }} {{ create_get_method }}
+      script: /home/phong/Xopera_opera_deploys/ToDo_List_API/swagger_gen.py {{ iam_role_response.arn }} arn:aws:apigateway:{{ region }}:lambda:path/2015-03-31/functions/{{ lambda_info1.arn }} {{ create_post_method }} {{ create_put_method }} {{ create_delete_method }} {{ create_get_method }}
       args:
         executable: python3
 
