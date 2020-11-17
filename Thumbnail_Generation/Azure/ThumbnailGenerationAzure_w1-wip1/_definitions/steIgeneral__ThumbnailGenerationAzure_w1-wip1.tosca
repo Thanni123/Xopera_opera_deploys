@@ -1,0 +1,41 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+metadata:
+  targetNamespace: "example.org.tosca.servicetemplates"
+imports:
+  - file: radonnodesazure__AzureFunction.tosca
+    namespace_uri: radon.nodes.azure
+    namespace_prefix: radonnodesazure
+  - file: radonnodesazure__AzurePlatform.tosca
+    namespace_uri: radon.nodes.azure
+    namespace_prefix: radonnodesazure
+topology_template:
+  node_templates:
+    AzureFunction:
+      type: radon.nodes.azure.AzureFunction
+      metadata:
+        x: "820"
+        y: "260"
+        displayName: "AzureFunction"
+      properties:
+        app_runtime: null
+        app_name: null
+        entries: null
+        environment: null
+        function_name: null
+        name: null
+        app_storage_account: null
+        app_os_type: null
+        app_resource_group: null
+        timeout: 300
+    AzurePlatform:
+      type: radon.nodes.azure.AzurePlatform
+      metadata:
+        x: "824"
+        y: "589"
+        displayName: "AzurePlatform"
+      properties:
+        password: null
+        user_name: null
+        name: null
+        region: null
