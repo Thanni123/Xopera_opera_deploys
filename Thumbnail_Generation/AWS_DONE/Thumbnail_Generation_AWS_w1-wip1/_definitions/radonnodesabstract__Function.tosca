@@ -30,11 +30,10 @@ node_types:
           node: radon.nodes.abstract.CloudPlatform
           relationship: tosca.relationships.HostedOn
           occurrences: [ 1, 1 ]
-# Error: '[ReferenceWrapper] Invalid reference relationship_types/radon.relationships.abstract.ConnectsTo'
-#      - endpoint:
-#          capability: tosca.capabilities.Endpoint
-#          relationship: radon.relationships.abstract.ConnectsTo
-#          occurrences: [ 0, UNBOUNDED ]
+      - endpoint:
+          capability: tosca.capabilities.Endpoint
+          relationship: radon.relationships.abstract.ConnectsTo
+          occurrences: [ 0, UNBOUNDED ]
     capabilities:
       invocable:
         occurrences: [ 0, UNBOUNDED ]

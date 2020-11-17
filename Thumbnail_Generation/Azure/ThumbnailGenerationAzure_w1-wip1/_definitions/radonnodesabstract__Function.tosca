@@ -17,7 +17,7 @@ node_types:
         required: false
         status: supported
       entries:
-        type: Entries
+        type: string
         required: false
         status: supported
       name:
