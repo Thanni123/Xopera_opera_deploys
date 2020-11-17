@@ -1,0 +1,40 @@
+# Note: Service Template for deploying ToDo List API Gateway Application
+- hosts: localhost
+  vars:
+    - current_directory: "{{ lookup('env','PWD') }}"
+  tasks:
+    # Note: Setup & configuration of AWS API Gateway
+    - name: Find swagger file by name
+      find:
+        paths: "{{ current_directory }}"
+        patterns: '"{{ swagger_file }}".yaml, "{{ swagger_file }}".json'
+        recurse: yes
+      register: matched_swagger_file
+
+    - name: Check that the swagger file exists
+      stat:
+        path: "{{ matched_swagger_file.files[0].path }}"
+      register: swagger_spec
+
+    - name: Remove the old swagger specification
+      file:
+        path: "{{ matched_swagger_file.files[0].path }}"
+        state: absent
+      when: swagger_spec.stat.exists
+
+    - name: Set the basis for API
+      copy:
+        content: '{ "swagger": "2.0", "info": {"title": "{{ api_title }}", "description": "{{ api_description }}", "version": "{{ api_version }}" }, "paths": {"/todo": []}}'
+        dest: "{{ current_directory }}/swagger.json"
+
+    - name: Run swagger_gen.py script for adding methods to swagger file
+      script: swagger_gen.py {{ iam_role_response.arn }} {{ create_post_method }} {{ uriPost }} {{ create_put_method }} {{ uriPut }} {{ create_delete_method }} {{ uriDelete }} {{ create_get_method }} {{ uriGet }}
+      args:
+        executable: python3
+
+    - name: Setup AWS API Gateway setup on AWS and deploy API definition
+      aws_api_gateway:
+        state: present
+        swagger_file: "{{ current_directory }}/swagger.json"
+        stage: production
+        region: "{{ region }}"
