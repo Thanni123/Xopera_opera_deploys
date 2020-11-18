@@ -38,7 +38,7 @@
 
     - name: Create global AWS role
       iam_role:
-        name: global-serverless-role
+        name: global-serverless-role-customphong391
         state: present
         assume_role_policy_document: "{{ lookup('file', lookup('fileglob', policy_file_matched_subdirectory.files[0].path)) }}"
         managed_policy:
