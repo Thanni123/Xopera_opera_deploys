@@ -45,5 +45,4 @@ node_types:
           configure:
             implementation:
               primary: /nodetypes/radon.nodes.aws/AwsPlatform/files/configure/configure.yml
-              dependencies: [ policy ]
               timeout: 0
