@@ -1,0 +1,20 @@
+- name: Deploy Azure Blob Storage
+  hosts: localhost
+  tasks:
+    - name: Create container and upload a file
+      azure_rm_storageblob:
+        resource_group: "{{ resource_group }}"
+        storage_account_name: "{{ storage_account_name }}"
+        container: upload
+        blob: testThumbnail.png
+        src: ./files/testThumbnail.png
+        public_access: container
+        content_type: 'application/image'
+
+    - name: Download processed file
+      azure_rm_blobstorage:
+        resource_group: "{{ resource_group }}"
+        storage_account_name: "{{ storage_account_name }}"
+        container: download
+        blob: testThumbnailProcessed.png
+        dest: ~/tmp/images/testThumbnailProcessed.png

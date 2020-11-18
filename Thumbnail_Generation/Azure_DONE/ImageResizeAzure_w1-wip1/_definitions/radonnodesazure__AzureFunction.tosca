@@ -1,0 +1,84 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+imports:
+  - file: radonnodesabstract__Function.tosca
+    namespace_uri: radon.nodes.abstract
+    namespace_prefix: radonnodesabstract
+  - file: radoncapabilities__Invocable.tosca
+    namespace_uri: radon.capabilities
+    namespace_prefix: radoncapabilities
+  - file: radonartifacts__Ansible.tosca
+    namespace_uri: radon.artifacts
+    namespace_prefix: radonartifacts
+  - file: radonartifactsarchive__JAR.tosca
+    namespace_uri: radon.artifacts.archive
+    namespace_prefix: radonartifactsarchive
+node_types:
+  radon.nodes.azure.AzureFunction:
+    derived_from: radon.nodes.abstract.Function
+    metadata:
+      abstract: "false"
+      final: "false"
+      targetNamespace: "radon.nodes.azure"
+    attributes:
+      app_resource_group:
+        description: App resource group identifier
+        type: string
+      app_storage_account:
+        description: App storage account identifier
+        type: string
+    properties:
+      zip_file:
+        type: string
+        description: path to a function zip file
+        required: true
+        status: supported
+      function_name:
+        type: string
+        required: true
+        status: supported
+    requirements:
+      - host:
+          capability: tosca.capabilities.Container
+          node: radon.nodes.azure.AzurePlatform
+          relationship: tosca.relationships.HostedOn
+          occurrences: [ 1, 1 ]
+      - endpoint:
+          capability: tosca.capabilities.Endpoint
+          node: radon.nodes.azure.AzureBlobStorage
+          relationship: tosca.relationships.ConnectsTo
+          occurrences: [ 1, 1 ]
+    capabilities:
+      invocable:
+        occurrences: [ 1, 1 ]
+        valid_source_types: [ radon.nodes.azure.AzureBlobStorage ]
+        type: radon.capabilities.Invocable
+    interfaces:
+      Standard:
+        type: tosca.interfaces.node.lifecycle.Standard
+        inputs:
+          app_resource_group:
+            type: string
+            required: true
+            default: { get_attribute: [ SELF, host, app_resource_group ] }
+          app_storage_account:
+            type: string
+            required: true
+            default: { get_attribute: [ SELF, host, app_storage_account ] }
+          function_name:
+            type: string
+            required: true
+            default: { get_property: [ SELF, function_name ] }
+          zip_file:
+            type: string
+            required: true
+            default: { get_property: [ SELF, zip_file ] }
+        operations:
+          create:
+            implementation:
+              primary: /nodetypes/radon.nodes.azure/AzureFunction/files/create/create.yml
+              timeout: 0
+          delete:
+            implementation:
+              primary: /nodetypes/radon.nodes.azure/AzureFunction/files/delete/delete.yml
+              timeout: 0

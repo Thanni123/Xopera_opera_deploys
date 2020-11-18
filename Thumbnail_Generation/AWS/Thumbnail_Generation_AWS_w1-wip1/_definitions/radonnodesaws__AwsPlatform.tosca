@@ -1,0 +1,38 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+imports:
+  - file: radonnodesabstract__CloudPlatform.tosca
+    namespace_uri: radon.nodes.abstract
+    namespace_prefix: radonnodesabstract
+  - file: radonartifacts__Ansible.tosca
+    namespace_uri: radon.artifacts
+    namespace_prefix: radonartifacts
+node_types:
+  radon.nodes.aws.AwsPlatform:
+    derived_from: radon.nodes.abstract.CloudPlatform
+    metadata:
+      abstract: "false"
+      final: "false"
+      targetNamespace: "radon.nodes.aws"
+    properties:
+      region:
+        type: string
+        required: true
+        status: supported
+    capabilities:
+      host:
+        occurrences: [ 1, UNBOUNDED ]
+        valid_source_types: [ radon.nodes.aws.AwsLambdaFunction, radon.nodes.aws.AwsS3Bucket ]
+        type: tosca.capabilities.Container
+    interfaces:
+      Standard:
+        type: tosca.interfaces.node.lifecycle.Standard
+        operations:
+          create:
+            implementation:
+              primary: /nodetypes/radon.nodes.aws/AwsPlatform/files/install.yml
+              timeout: 0
+          delete:
+            implementation:
+              primary: /nodetypes/radon.nodes.aws/AwsPlatform/files/uninstall.yml
+              timeout: 0

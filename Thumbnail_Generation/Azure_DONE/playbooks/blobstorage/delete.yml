@@ -1,0 +1,9 @@
+- name: Undeploy Azure Blob Storage
+  hosts: localhost
+  tasks:
+    - name: Remove container
+      azure_rm_storageblob:
+        resource_group: "{{ resource_group }}"
+        storage_account_name: "{{ storage_account_name }}"
+        container: upload
+        state: absent

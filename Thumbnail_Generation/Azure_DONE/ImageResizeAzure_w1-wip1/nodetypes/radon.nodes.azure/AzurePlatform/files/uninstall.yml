@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  tasks:
+    - name: "Uninstall Python module : azure-cli"
+      pip:
+        name: azure-cli
+        state: absent
+
+    - name: "Uninstall Python module : azure-functions"
+      pip:
+        name: azure-functions
+        state: absent
+
+    - name: "Uninstall Python module : dotnet"
+      pip:
+        name: dotnet
+        state: absent
+
+    - name: Delete a resource group including resources it contains
+      azure_rm_resourcegroup:
+        name: "{{ APP_RESOURCE_GROUP }}"
+        force_delete_nonempty: yes
+        state: absent

@@ -1,0 +1,65 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+node_types:
+  radon.nodes.azure.AzureBlobStorage:
+    derived_from: radon.nodes.abstract.ObjectStorage
+    metadata:
+      abstract: "false"
+      final: "false"
+      targetNamespace: "radon.nodes.azure"
+    attributes:
+      app_resource_group:
+        description: App resource group identifier
+        type: string
+      app_storage_account:
+        description: App storage account identifier
+        type: string
+    properties:
+      name:
+        type: string
+        description: The name of the Azure Blob Storage
+        required: true
+        status: supported
+    requirements:
+    - host:
+        capability: tosca.capabilities.Container
+        node: radon.nodes.azure.AzurePlatform
+        relationship: tosca.relationships.HostedOn
+        occurrences: [ 1, 1 ]
+    - invoker:
+        capability: radon.capabilities.Invocable
+        node: radon.nodes.azure.AzureFunction
+        relationship: radon.relationships.azure.AzureTriggers
+        occurrences: [ 0, UNBOUNDED ]
+    interfaces:
+      Standard:
+        type: tosca.interfaces.node.lifecycle.Standard
+        inputs:
+          app_resource_group:
+            type: string
+            required: true
+            default: { get_attribute: [ SELF, host, app_resource_group ] }
+          app_storage_account:
+            type: string
+            required: true
+            default: { get_attribute: [ SELF, host, app_storage_account ] }
+          container:
+            type: string
+            required: true
+            default: { get_property: [ SELF, name ] }
+        operations:
+          create:
+            implementation:
+              primary: create
+              timeout: 0
+          delete:
+            implementation:
+              primary: delete
+              timeout: 0
+    artifacts:
+      create:
+        type: radon.artifacts.Ansible
+        file: create.yml
+      delete:
+        type: radon.artifacts.Ansible
+        file: delete.yml
