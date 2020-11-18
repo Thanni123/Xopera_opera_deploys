@@ -14,25 +14,36 @@ node_types:
       abstract: "false"
       final: "false"
       targetNamespace: "radon.nodes.aws"
+    attributes:
+      role_arn:
+        description: AWS role arn identifier
+        type: string
     properties:
+      name:
+        type: string
+        default: "AWS"
       region:
         type: string
-        required: true
-        status: supported
     capabilities:
       host:
         occurrences: [ 1, UNBOUNDED ]
-        valid_source_types: [ radon.nodes.aws.AwsLambdaFunction, radon.nodes.aws.AwsS3Bucket ]
+        valid_source_types: [ radon.nodes.aws.AwsLambdaFunction, radon.nodes.aws.AwsS3Bucket, radon.nodes.VM.EC2, radon.nodes.aws.AwsApiGateway, radon.nodes.aws.AwsDynamoDBTable, radon.nodes.aws.AwsLambdaFunctionFromS3 ]
         type: tosca.capabilities.Container
     interfaces:
       Standard:
         type: tosca.interfaces.node.lifecycle.Standard
+        inputs:
+          region:
+            type: string
+            required: true
+            default: { get_property: [ SELF, region ] }
+          name:
+            type: string
+            required: false
+            default: { get_property: [ SELF, name ] }
         operations:
-          create:
+          configure:
             implementation:
-              primary: /nodetypes/radon.nodes.aws/AwsPlatform/files/install.yml
-              timeout: 0
-          delete:
-            implementation:
-              primary: /nodetypes/radon.nodes.aws/AwsPlatform/files/uninstall.yml
+              primary: /nodetypes/radon.nodes.aws/AwsPlatform/files/configure/configure.yml
+              dependencies: [ policy ]
               timeout: 0
