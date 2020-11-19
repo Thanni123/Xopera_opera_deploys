@@ -60,7 +60,3 @@ node_types:
             implementation:
               primary: /nodetypes/radon.nodes.azure/AzurePlatform/files/configure/configure.yml
               timeout: 0
-          delete:
-            implementation:
-              primary: /nodetypes/radon.nodes.azure/AzurePlatform/files/uninstall.yml
-              timeout: 0

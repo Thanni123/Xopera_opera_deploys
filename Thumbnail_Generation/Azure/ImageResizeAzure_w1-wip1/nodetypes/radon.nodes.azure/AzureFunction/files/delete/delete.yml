@@ -1,8 +1,10 @@
 - name: Undeploy Azure Blob Storage
   hosts: localhost
   tasks:
+#NOTE: replace this line below with line in task below for later deploy
+#        name: "{{ function_name }}"
     - name: Delete a function app
       azure_rm_functionapp:
-        resource_group: "{{ APP_RESOURCE_GROUP }}"
-        name: "{{ FUNCTION_NAME }}"
+        resource_group: "{{ app_resource_group }}"
+        name: mythumbnailfunctionapp
         state: absent
