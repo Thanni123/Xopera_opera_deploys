@@ -45,6 +45,13 @@
         content: '{ "swagger": "2.0", "info": {"title": "{{ api_title }}", "description": "{{ api_description }}", "version": "{{ api_version }}" }, "paths": {}}'
         dest: "{{ spec_path }}"
 
+    - name: Deploy API gateway
+      aws_api_gateway:
+        state: present
+        swagger_file: "{{ lookup('fileglob', matched_swagger_file.files[0].path) }}"
+        stage: production
+        region: "{{ aws_region }}"
+
 #NOTE: custom python script for generation swagger spec based on generated swagger base before
 #    - name: Run swagger_gen.py script for adding methods to swagger file
 #      script: swagger_gen.py {{ iam_role_response.arn }} {{ create_post_method }} {{ uriPost }} {{ create_put_method }} {{ uriPut }} {{ create_delete_method }} {{ uriDelete }} {{ create_get_method }} {{ uriGet }}
