@@ -43,16 +43,6 @@ node_types:
           node: radon.nodes.azure.AzurePlatform
           relationship: tosca.relationships.HostedOn
           occurrences: [ 1, 1 ]
-      - endpoint:
-          capability: tosca.capabilities.Endpoint
-          node: radon.nodes.azure.AzureBlobStorage
-          relationship: tosca.relationships.ConnectsTo
-          occurrences: [ 1, 1 ]
-    capabilities:
-      invocable:
-        occurrences: [ 1, 1 ]
-        valid_source_types: [ radon.nodes.azure.AzureBlobStorage ]
-        type: radon.capabilities.Invocable
     interfaces:
       Standard:
         type: tosca.interfaces.node.lifecycle.Standard

@@ -19,11 +19,6 @@ node_types:
           node: radon.nodes.abstract.CloudPlatform
           relationship: tosca.relationships.HostedOn
           occurrences: [ 1, 1 ]
-      - endpoint:
-          capability: tosca.capabilities.Endpoint
-          node: radon.nodes.abstract.ObjectStorage
-          relationship: tosca.relationships.ConnectsTo
-          occurrences: [ 1, 1 ]
     capabilities:
       invocable:
         occurrences: [ 0, UNBOUNDED ]
