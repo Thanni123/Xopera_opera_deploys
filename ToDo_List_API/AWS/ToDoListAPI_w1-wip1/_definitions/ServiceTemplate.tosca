@@ -20,32 +20,32 @@ imports:
     namespace_prefix: radonrelationshipsaws
 topology_template:
   node_templates:
-#    AwsLambdaFunction_1:
-#      type: radon.nodes.aws.AwsLambdaFunction
-#      metadata:
-#        x: "894"
-#        y: "207"
-#        displayName: "GetTodoItem"
-#      properties:
-#        handler: "get.handler"
-#        memory: 128
-#        name: "get-todo"
-#        runtime: "nodejs12.x"
-#        alias: "dev"
-#        statement_id: "get-stmt"
-#        zip_file: { get_artifact: [ SELF, get-item ] }
-#        timeout: 300
-#        env_vars:
-#          TODOS_TABLE: "items"
-#      requirements:
+    AwsLambdaFunction_1:
+      type: radon.nodes.aws.AwsLambdaFunction
+      metadata:
+        x: "894"
+        y: "207"
+        displayName: "GetTodoItem"
+      properties:
+        handler: "get.handler"
+        memory: 128
+        name: "get-todo"
+        runtime: "nodejs12.x"
+        alias: "dev"
+        statement_id: "get-stmt"
+        zip_file: "get.zip"
+        timeout: 300
+        env_vars:
+          TODOS_TABLE: "items"
+      requirements:
 #        - endpoint:
 #            node: AwsDynamoDBTable_0
 #            relationship: con_ConnectsTo_1
 #            capability: database_endpoint
-#        - host:
-#            node: AwsPlatform_0
-#            relationship: con_HostedOn_3
-#            capability: host
+        - host:
+            node: AwsPlatform_0
+            relationship: con_HostedOn_3
+            capability: host
 #      artifacts:
 #        get-item:
 #          type: radon.artifacts.archive.Zip
@@ -235,8 +235,8 @@ topology_template:
 #  relationship_templates:
 #    con_HostedOn_2:
 #      type: tosca.relationships.HostedOn
-#    con_HostedOn_3:
-#      type: tosca.relationships.HostedOn
+    con_HostedOn_3:
+      type: tosca.relationships.HostedOn
 #    con_HostedOn_0:
 #      type: tosca.relationships.HostedOn
 #    con_HostedOn_1:
