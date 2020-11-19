@@ -72,23 +72,23 @@ topology_template:
             node: AwsPlatform_0
             relationship: con_HostedOn_4
             capability: host
-#    AwsDynamoDBTable_0:
-#      type: radon.nodes.aws.AwsDynamoDBTable
-#      metadata:
-#        x: "1514"
-#        y: "301"
-#        displayName: "ItemsTable"
-#      properties:
-#        hash_key_name: "id"
-#        read_capacity: 1
-#        write_capacity: 1
-#        hash_key_type: "STRING"
-#        table_name: "items"
-#      requirements:
-#        - host:
-#            node: AwsPlatform_0
-#            relationship: con_HostedOn_0
-#            capability: host
+    AwsDynamoDBTable_0:
+      type: radon.nodes.aws.AwsDynamoDBTable
+      metadata:
+        x: "1514"
+        y: "301"
+        displayName: "ItemsTable"
+      properties:
+        hash_key_name: "id"
+        read_capacity: 1
+        write_capacity: 1
+        hash_key_type: "STRING"
+        table_name: "items"
+      requirements:
+        - host:
+            node: AwsPlatform_0
+            relationship: con_HostedOn_0
+            capability: host
     AwsLambdaFunction_0:
       type: radon.nodes.aws.AwsLambdaFunction
       metadata:
@@ -217,8 +217,8 @@ topology_template:
 #      type: tosca.relationships.HostedOn
     con_HostedOn_3:
       type: tosca.relationships.HostedOn
-#    con_HostedOn_0:
-#      type: tosca.relationships.HostedOn
+    con_HostedOn_0:
+      type: tosca.relationships.HostedOn
     con_HostedOn_1:
       type: tosca.relationships.HostedOn
     con_HostedOn_6:
