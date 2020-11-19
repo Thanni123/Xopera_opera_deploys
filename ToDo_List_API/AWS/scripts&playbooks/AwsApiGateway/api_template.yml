@@ -7,7 +7,7 @@
     - name: Find swagger file by name
       find:
         paths: "{{ current_directory }}"
-        patterns: '"{{ swagger_file }}".yaml, "{{ swagger_file }}".json'
+        patterns: "{{ swagger_file }}"
         recurse: yes
       register: matched_swagger_file
 

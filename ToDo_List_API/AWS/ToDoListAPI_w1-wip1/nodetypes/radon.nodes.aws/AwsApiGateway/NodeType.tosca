@@ -20,6 +20,10 @@ node_types:
       api_version:
         type: string
         description: Version of the API
+      swagger_file:
+        description: Specification of swagger file name
+        type: string
+        required: false
     requirements:
       - host:
           capability: tosca.capabilities.Container
@@ -51,6 +55,10 @@ node_types:
             type: string
             required: true
             default: { get_property: [ SELF, api_version ] }
+          swagger_file:
+            type: string
+            required: false
+            default: { get_property: [ SELF, swagger_file ] }
         operations:
           create:
             implementation:
