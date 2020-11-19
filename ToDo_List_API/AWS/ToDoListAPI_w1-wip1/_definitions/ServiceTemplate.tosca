@@ -38,10 +38,10 @@ topology_template:
         env_vars:
           TODOS_TABLE: "items"
       requirements:
-#        - endpoint:
-#            node: AwsDynamoDBTable_0
-#            relationship: con_ConnectsTo_1
-#            capability: database_endpoint
+        - endpoint:
+            node: AwsDynamoDBTable_0
+            relationship: con_ConnectsTo_1
+            capability: database_endpoint
         - host:
             node: AwsPlatform_0
             relationship: con_HostedOn_3
@@ -255,8 +255,8 @@ topology_template:
 #        http_methods: "post"
 #    con_ConnectsTo_0:
 #      type: radon.relationships.ConnectsTo
-#    con_ConnectsTo_1:
-#      type: radon.relationships.ConnectsTo
+    con_ConnectsTo_1:
+      type: radon.relationships.ConnectsTo
 #    con_ApiGatewayTriggers_1:
 #      type: radon.relationships.aws.ApiGatewayTriggers
 #      properties:
