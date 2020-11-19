@@ -85,7 +85,7 @@ topology_template:
     con_HostedOn_1:
       type: tosca.relationships.HostedOn
     con_ConnectsTo_0:
-      type: radon.relationships.ConnectsTo
+      type: tosca.relationships.ConnectsTo
     con_AzureTriggers_0:
       type: radon.relationships.azure.AzureTriggers
       properties:
