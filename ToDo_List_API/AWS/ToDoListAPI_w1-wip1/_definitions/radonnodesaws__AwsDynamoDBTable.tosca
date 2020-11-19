@@ -1,5 +1,12 @@
 tosca_definitions_version: tosca_simple_yaml_1_3
 
+imports:
+  - file: toscanodes__Database.tosca
+    namespace_uri: tosca.nodes
+    namespace_prefix: toscanodes
+  - file: radonartifacts__Ansible.tosca
+    namespace_uri: radon.artifacts
+    namespace_prefix: radonartifacts
 node_types:
   radon.nodes.aws.AwsDynamoDBTable:
     derived_from: tosca.nodes.Database
@@ -79,16 +86,9 @@ node_types:
         operations:
           create:
             implementation:
-              primary: create
+              primary: /nodetypes/radon.nodes.aws/AwsDynamoDBTable/files/create/create.yml
               timeout: 0
           delete:
             implementation:
-              primary: delete
+              primary: /nodetypes/radon.nodes.aws/AwsDynamoDBTable/files/delete/delete.yml
               timeout: 0
-    artifacts:
-      create:
-        type: radon.artifacts.Ansible
-        file: create.yml
-      delete:
-        type: radon.artifacts.Ansible
-        file: delete.yml
