@@ -16,11 +16,14 @@
       debug:
         msg: "Matched swagger file: {{ matched_swagger_file.files[0].path }}"
 
-#    - name: Check that the swagger file exists
-#      stat:
-#        path: "{{ matched_swagger_file.files[0].path }}"
-#      register: swagger_spec
-#
+    - name: Check that the swagger file exists
+      stat:
+        path: "{{ matched_swagger_file.files[0].path }}"
+      register: swagger_spec
+
+    - debug:
+        msg: "Existing swagger spec detected in {{ matched_swagger_file.files[0].path }}."
+
 #    - name: Remove the old swagger specification
 #      file:
 #        path: "{{ matched_swagger_file.files[0].path }}"
