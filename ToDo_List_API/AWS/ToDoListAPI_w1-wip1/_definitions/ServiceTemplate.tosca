@@ -12,6 +12,9 @@ imports:
   - file: radonnodesaws__AwsDynamoDBTable.tosca
     namespace_uri: radon.nodes.aws
     namespace_prefix: radonnodesaws
+  - file: radonnodesaws__AwsApiGateway.tosca
+    namespace_uri: radon.nodes.aws
+    namespace_prefix: radonnodesaws
   - file: radonrelationshipsaws__AwsTriggers.tosca
     namespace_uri: radon.relationships.aws
     namespace_prefix: radonrelationshipsaws
