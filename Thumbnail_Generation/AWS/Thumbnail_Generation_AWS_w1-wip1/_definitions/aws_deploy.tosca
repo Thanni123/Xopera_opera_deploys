@@ -53,11 +53,11 @@ topology_template:
         env_vars: null
         name: "my_resizer"
         alias: "my_resizer_v0_1"
-#      requirements:
-#        - host:
-#            node: AwsPlatform
-#            relationship: con_HostedOn_0
-#            capability: host
+      requirements:
+        - host:
+            node: AwsPlatform
+            relationship: con_HostedOn_0
+            capability: host
 #        - endpoint:
 #            node: AwsS3Bucket_2
 #            relationship: con_ConnectsTo_0
@@ -87,11 +87,11 @@ topology_template:
         name: "AWS"
         region: "eu-central-1"
         policy_file: "policy.json"
-#  relationship_templates:
+  relationship_templates:
 #    con_HostedOn_2:
 #      type: tosca.relationships.HostedOn
-#    con_HostedOn_0:
-#      type: tosca.relationships.HostedOn
+    con_HostedOn_0:
+      type: tosca.relationships.HostedOn
 #    con_HostedOn_1:
 #      type: tosca.relationships.HostedOn
 #    con_ConnectsTo_0:
