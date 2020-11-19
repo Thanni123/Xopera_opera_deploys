@@ -92,8 +92,8 @@ topology_template:
 #      type: tosca.relationships.HostedOn
     con_HostedOn_0:
       type: tosca.relationships.HostedOn
-#    con_HostedOn_1:
-#      type: tosca.relationships.HostedOn
+    con_HostedOn_1:
+      type: tosca.relationships.HostedOn
 #    con_ConnectsTo_0:
 #      type: tosca.relationships.ConnectsTo
 #      properties:
