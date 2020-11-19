@@ -1,6 +1,6 @@
 ## AWS Platform  Node Type
 
-A node type that represents the AWS platform.
+This is node type represents AWS as a platform.
 
 | Name | URI | Version | Derived From |
 |:---- |:--- |:------- |:------------ |
@@ -17,4 +17,4 @@ A node type that represents the AWS platform.
 ### Capabilities
 | Name | Type | Valid Source Types | Occurrences |
 |:---- |:---- |:------------------ |:----------- |
-| `host` | `tosca.capabilities.Container` | `[radon.nodes.aws.LambdaFunction, radon.nodes.aws.S3Bucket, radon.nodes.VM.EC2]` | [0, UNBOUNDED] |
+|`host`|`tosca.capabilities.Container`| `[radon.nodes.aws.LambdaFunction, radon.nodes.aws.S3Bucket]`| [0, UNBOUNDED] |
