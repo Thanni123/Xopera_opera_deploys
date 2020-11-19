@@ -24,6 +24,10 @@ node_types:
         default: "AWS"
       region:
         type: string
+      policy_file:
+        description: Specification of policy file name
+        type: string
+        required: true
     capabilities:
       host:
         occurrences: [ 1, UNBOUNDED ]
@@ -41,6 +45,10 @@ node_types:
             type: string
             required: false
             default: { get_property: [ SELF, name ] }
+          policy_file:
+            type: string
+            required: true
+            default: { get_property: [ SELF, policy_file ] }
         operations:
           configure:
             implementation:

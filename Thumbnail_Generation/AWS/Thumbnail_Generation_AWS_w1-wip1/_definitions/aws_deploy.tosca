@@ -91,6 +91,7 @@ topology_template:
       properties:
         name: "AWS"
         region: "eu-central-1"
+        policy_file: "policy.json"
 #  relationship_templates:
 #    con_HostedOn_2:
 #      type: tosca.relationships.HostedOn
