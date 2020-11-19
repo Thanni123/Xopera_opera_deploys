@@ -4,9 +4,9 @@ node_types:
   radon.nodes.abstract.ApiGateway:
     derived_from: tosca.nodes.Root
     metadata:
+      targetNamespace: "radon.nodes.abstract"
       abstract: "false"
       final: "false"
-      targetNamespace: "radon.nodes.abstract"
     requirements:
       - host:
           capability: tosca.capabilities.Container
@@ -16,5 +16,5 @@ node_types:
       - invoker:
           capability: radon.capabilities.Invocable
           node: radon.nodes.abstract.Function
-          relationship: radon.relationships.abstract.Triggers
+          relationship: radon.relationships.Triggers
           occurrences: [ 0, UNBOUNDED ]

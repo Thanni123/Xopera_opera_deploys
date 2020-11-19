@@ -1,9 +1,5 @@
 tosca_definitions_version: tosca_simple_yaml_1_3
 
-imports:
-  - file: radonnodesabstract__ApiGateway.tosca
-    namespace_uri: radon.nodes.abstract
-    namespace_prefix: radonnodesabstract
 node_types:
   radon.nodes.aws.AwsApiGateway:
     derived_from: radon.nodes.abstract.ApiGateway
@@ -58,9 +54,16 @@ node_types:
         operations:
           create:
             implementation:
-              primary: /nodetypes/radon.nodes.aws/AwsApiGateway/files/configure/configure.yml
+              primary: create
               timeout: 0
           configure:
             implementation:
-              primary: /nodetypes/radon.nodes.aws/AwsApiGateway/files/create/create.yml
+              primary: configure
               timeout: 0
+    artifacts:
+      create:
+        type: radon.artifacts.Ansible
+        file: create.yml
+      configure:
+        type: radon.artifacts.Ansible
+        file: configure.yml
