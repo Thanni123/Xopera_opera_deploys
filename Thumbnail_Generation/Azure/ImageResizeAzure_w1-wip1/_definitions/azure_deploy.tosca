@@ -87,6 +87,6 @@ topology_template:
 #    con_ConnectsTo_0:
 #      type: radon.relationships.ConnectsTo
     con_AzureTriggers_0:
-      type: radon.relationship.azure.AzureTriggers
+      type: radon.relationships.azure.AzureTriggers
       properties:
         events: "azureBlobStorage:ObjectCreated:*"
