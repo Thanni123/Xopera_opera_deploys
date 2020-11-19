@@ -1,0 +1,58 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+metadata:
+  targetNamespace: "example.org.tosca.servicetemplates"
+imports:
+  - file: radonnodesaws__AwsLambdaFunction.tosca
+    namespace_uri: radon.nodes.aws
+    namespace_prefix: radonnodesaws
+  - file: radonnodesaws__AwsPlatform.tosca
+    namespace_uri: radon.nodes.aws
+    namespace_prefix: radonnodesaws
+  - file: radonnodesaws__AwsApiGateway.tosca
+    namespace_uri: radon.nodes.aws
+    namespace_prefix: radonnodesaws
+topology_template:
+  node_templates:
+    AwsLambdaFunction:
+      type: radon.nodes.aws.AwsLambdaFunction
+      metadata:
+        x: "910"
+        y: "217"
+        displayName: "AwsLambdaFunction"
+      properties:
+        handler: "index.handler"
+        memory: 128
+        memory_range: null
+        runtime: "nodejs"
+        statement_id: null
+        timeout: 3
+        env_vars: null
+        concurrency: null
+        entries: null
+        environment: null
+        name: null
+        alias: null
+        concurrency_range: null
+        zip_file: null
+    AwsPlatform:
+      type: radon.nodes.aws.AwsPlatform
+      metadata:
+        x: "732"
+        y: "450"
+        displayName: "AwsPlatform"
+      properties:
+        name: null
+        region: null
+    AwsApiGateway:
+      type: radon.nodes.aws.AwsApiGateway
+      metadata:
+        x: "490"
+        y: "254"
+        displayName: "AwsApiGateway"
+      properties:
+        role_name: null
+        aws_region: null
+        function_name: null
+        api_gateway_resource_uri: null
+        api_gateway_title: null

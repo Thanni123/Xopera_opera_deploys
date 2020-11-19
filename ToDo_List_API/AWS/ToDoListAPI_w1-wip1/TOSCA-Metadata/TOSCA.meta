@@ -1,0 +1,161 @@
+TOSCA-Meta-Version: 1.0
+CSAR-Version: 1.1
+Created-By: Winery 2.0.0-SNAPSHOT
+Entry-Definitions: _definitions/steIgeneral__ToDoListAPI_w1-wip1.tosca
+
+Name: nodetypes/radon.nodes.aws/AwsPlatform/LICENSE
+Content-Type: text/plain
+
+Name: _definitions/radonnodesabstract__ApiGateway.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.aws/AwsLambdaFunction/appearance/smallIcon.png
+Content-Type: image/jpeg
+
+Name: relationshiptypes/radon.relationships.abstract/Triggers/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.aws/AwsApiGateway/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.aws/AwsLambdaFunction/files/thumbnail-generator-dev/thumbnail-generator-dev.jar
+Content-Type: application/java-archive
+
+Name: nodetypes/radon.nodes.abstract/Function/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: _definitions/radonnodesaws__AwsLambdaFunction.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.abstract/Function/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: relationshiptypes/radon.relationships.abstract/ConnectsTo/README.md
+Content-Type: text/x-web-markdown
+
+Name: nodetypes/radon.nodes.abstract/CloudPlatform/LICENSE
+Content-Type: text/plain
+
+Name: _definitions/radonrelationshipsabstract__ConnectsTo.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: artifacttypes/radon.artifacts.archive/JAR/LICENSE
+Content-Type: text/plain
+
+Name: _definitions/radonrelationshipsabstract__Triggers.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: artifacttypes/radon.artifacts/Ansible/LICENSE
+Content-Type: text/plain
+
+Name: artifacttypes/radon.artifacts/Ansible/README.md
+Content-Type: text/x-web-markdown
+
+Name: _definitions/radonartifactsarchive__JAR.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.abstract/CloudPlatform/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.aws/AwsLambdaFunction/files/delete/delete.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.aws/AwsApiGateway/README.md
+Content-Type: text/x-web-markdown
+
+Name: nodetypes/radon.nodes.abstract/ApiGateway/LICENSE
+Content-Type: text/plain
+
+Name: _definitions/radonnodesaws__AwsApiGateway.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.aws/AwsPlatform/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.aws/AwsPlatform/README.md
+Content-Type: text/x-web-markdown
+
+Name: nodetypes/radon.nodes.abstract/Function/README.md
+Content-Type: text/x-web-markdown
+
+Name: nodetypes/radon.nodes.aws/AwsLambdaFunction/appearance/bigIcon.png
+Content-Type: image/jpeg
+
+Name: nodetypes/radon.nodes.abstract/Function/LICENSE
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.aws/AwsPlatform/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: relationshiptypes/radon.relationships.abstract/Triggers/README.md
+Content-Type: text/x-web-markdown
+
+Name: capabilitytypes/radon.capabilities/Invocable/LICENSE
+Content-Type: text/plain
+
+Name: relationshiptypes/radon.relationships.abstract/ConnectsTo/LICENSE
+Content-Type: text/plain
+
+Name: servicetemplates/example.org.tosca.servicetemplates/ToDoListAPI_w1-wip1/README.md
+Content-Type: text/plain
+
+Name: _definitions/radonnodesabstract__Function.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: _definitions/steIgeneral__ToDoListAPI_w1-wip1.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.aws/AwsPlatform/files/configure/configure.yml
+Content-Type: text/plain
+
+Name: nodetypes/radon.nodes.aws/AwsLambdaFunction/README.md
+Content-Type: text/x-web-markdown
+
+Name: capabilitytypes/radon.capabilities/Invocable/README.md
+Content-Type: text/x-web-markdown
+
+Name: nodetypes/radon.nodes.aws/AwsApiGateway/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.aws/AwsLambdaFunction/files/create/create.yml
+Content-Type: text/plain
+
+Name: _definitions/radonartifacts__Ansible.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: _definitions/radonnodesaws__AwsPlatform.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.aws/AwsLambdaFunction/files/policy/policy.json
+Content-Type: application/json
+
+Name: nodetypes/radon.nodes.aws/AwsLambdaFunction/LICENSE
+Content-Type: text/plain
+
+Name: artifacttypes/radon.artifacts.archive/JAR/README.md
+Content-Type: text/x-web-markdown
+
+Name: _definitions/radonnodesabstract__CloudPlatform.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/radon.nodes.abstract/ApiGateway/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.abstract/CloudPlatform/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.abstract/ApiGateway/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.aws/AwsApiGateway/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: nodetypes/radon.nodes.abstract/ApiGateway/README.md
+Content-Type: text/x-web-markdown
+
+Name: nodetypes/radon.nodes.abstract/CloudPlatform/README.md
+Content-Type: text/x-web-markdown
+
+Name: _definitions/radoncapabilities__Invocable.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
