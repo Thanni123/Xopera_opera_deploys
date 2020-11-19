@@ -1,7 +1,7 @@
 ---
 - hosts: all
   vars:
-    - spec_path: "/tmp/swagger.json"
+#    - spec_path: "/tmp/swagger.json"
     - current_directory: "{{ lookup('env','PWD') }}"
   tasks:
 #NOTE: check for existing swagger spec in whole project folder
