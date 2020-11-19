@@ -12,7 +12,7 @@ imports:
   - file: radonnodesazure__AzureBlobStorage.tosca
     namespace_uri: radon.nodes.azure
     namespace_prefix: radonnodesazure
-  - file: radonrelationshipsaws__AzureTriggers.tosca
+  - file: radonrelationshipsazure__AzureTriggers.tosca
     namespace_uri: radon.relationships.azure
     namespace_prefix: radonrelationshipsazure
 topology_template:
