@@ -30,10 +30,10 @@ topology_template:
             node: AwsPlatform
             relationship: con_HostedOn_1
             capability: host
-#        - invoker:
-#            node: AwsLambdaFunction
-#            relationship: con_AwsTriggers_0
-#            capability: invocable
+        - invoker:
+            node: AwsLambdaFunction
+            relationship: con_AwsTriggers_0
+            capability: invocable
     AwsLambdaFunction:
       type: radon.nodes.aws.AwsLambdaFunction
       metadata:
@@ -94,7 +94,7 @@ topology_template:
 #      type: tosca.relationships.ConnectsTo
 #      properties:
 #        credential: null
-#    con_AwsTriggers_0:
-#      type: radon.relationships.aws.AwsTriggers
-#      properties:
-#        events: "s3:ObjectCreated:*"
+    con_AwsTriggers_0:
+      type: radon.relationships.aws.AwsTriggers
+      properties:
+        events: "s3:ObjectCreated:*"
