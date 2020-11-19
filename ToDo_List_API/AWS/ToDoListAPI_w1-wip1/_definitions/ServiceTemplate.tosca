@@ -164,8 +164,9 @@ topology_template:
         y: "589"
         displayName: "AwsPlatform"
       properties:
-        name: "AWS"
         region: "eu-central-1"
+        name: "AWS"
+        policy_file: "policy.json"
 #    AwsLambdaFunction_4:
 #      type: radon.nodes.aws.AwsLambdaFunction
 #      metadata:
