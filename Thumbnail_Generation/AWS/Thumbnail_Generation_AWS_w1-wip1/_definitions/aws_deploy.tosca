@@ -24,9 +24,7 @@ topology_template:
         y: "277"
         displayName: "sourceBucket"
       properties:
-        size: "0 MB"
         name: "mythumbnailinputbucket"
-        maxsize: 2
       requirements:
         - host:
             node: AwsPlatform
@@ -62,21 +60,19 @@ topology_template:
 #            node: AwsS3Bucket_2
 #            relationship: con_ConnectsTo_0
 #            capability: storage_endpoint
-#    AwsS3Bucket_2:
-#      type: radon.nodes.aws.AwsS3Bucket
-#      metadata:
-#        x: "1631"
-#        y: "314"
-#        displayName: "targetBucket"
-#      properties:
-#        size: "0 MB"
-#        name: "mythumbnailoutputbucket"
-#        maxsize: 2
-#      requirements:
-#        - host:
-#            node: AwsPlatform
-#            relationship: con_HostedOn_2
-#            capability: host
+    AwsS3Bucket_2:
+      type: radon.nodes.aws.AwsS3Bucket
+      metadata:
+        x: "1631"
+        y: "314"
+        displayName: "targetBucket"
+      properties:
+        name: "mythumbnailoutputbucket"
+      requirements:
+        - host:
+            node: AwsPlatform
+            relationship: con_HostedOn_2
+            capability: host
     AwsPlatform:
       type: radon.nodes.aws.AwsPlatform
       metadata:
