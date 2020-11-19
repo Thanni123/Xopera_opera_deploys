@@ -187,6 +187,7 @@ topology_template:
         api_title: "ServerlessToDoListAPI"
         api_version: "1.0.0"
         api_description: "a simple serverless API example"
+        swagger_file: "swagger.json"
       requirements:
         - host:
             node: AwsPlatform_0
