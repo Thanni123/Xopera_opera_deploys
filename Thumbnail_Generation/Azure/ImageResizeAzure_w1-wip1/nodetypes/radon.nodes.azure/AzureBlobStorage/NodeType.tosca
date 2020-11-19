@@ -28,8 +28,8 @@ node_types:
         occurrences: [ 1, 1 ]
     - invoker:
         capability: radon.capabilities.Invocable
-        node: radon.nodes.azure.AzureFunction
-        relationship: radon.relationships.azure.AzureTriggers
+        node: radon.nodes.abstract.Function
+        relationship: radon.relationships.aws.AzureTriggers
         occurrences: [ 0, UNBOUNDED ]
     interfaces:
       Standard:

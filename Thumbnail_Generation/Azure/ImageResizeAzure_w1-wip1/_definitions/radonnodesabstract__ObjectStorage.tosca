@@ -23,8 +23,3 @@ node_types:
           node: radon.nodes.abstract.Function
           relationship: radon.relationships.abstract.Triggers
           occurrences: [ 0, UNBOUNDED ]
-    capabilities:
-      endpoint:
-        occurrences: [ 1, UNBOUNDED ]
-        valid_source_types: [ radon.nodes.abstract.Function ]
-        type: tosca.capabilities.Endpoint

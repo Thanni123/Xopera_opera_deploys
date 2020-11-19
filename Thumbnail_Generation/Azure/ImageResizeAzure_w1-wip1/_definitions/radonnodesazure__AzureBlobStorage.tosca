@@ -7,9 +7,6 @@ imports:
   - file: radonartifacts__Ansible.tosca
     namespace_uri: radon.artifacts
     namespace_prefix: radonartifacts
-  - file: radonrelationshipsazure__AzureTriggers.tosca
-    namespace_uri: radon.relationships.azure
-    namespace_prefix: radonrelationshipsazure
 node_types:
   radon.nodes.azure.AzureBlobStorage:
     derived_from: radon.nodes.abstract.ObjectStorage
@@ -38,14 +35,9 @@ node_types:
         occurrences: [ 1, 1 ]
     - invoker:
         capability: radon.capabilities.Invocable
-        node: radon.nodes.azure.AzureFunction
-        relationship: radon.relationships.azure.AzureTriggers
-        occurrences: [ 1, 1 ]
-    capabilities:
-      endpoint:
-        occurrences: [ 1, UNBOUNDED ]
-        valid_source_types: [ radon.nodes.azure.AzureFunction ]
-        type: tosca.capabilities.Endpoint
+        node: radon.nodes.abstract.Function
+        relationship: radon.relationships.aws.AzureTriggers
+        occurrences: [ 0, UNBOUNDED ]
     interfaces:
       Standard:
         type: tosca.interfaces.node.lifecycle.Standard
