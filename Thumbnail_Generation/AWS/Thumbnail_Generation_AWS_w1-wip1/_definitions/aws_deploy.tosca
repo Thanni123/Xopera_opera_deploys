@@ -36,28 +36,23 @@ topology_template:
 #            node: AwsLambdaFunction
 #            relationship: con_AwsTriggers_0
 #            capability: invocable
-#    AwsLambdaFunction:
-#      type: radon.nodes.aws.AwsLambdaFunction
-#      metadata:
-#        x: "935"
-#        y: "242"
-#        displayName: "ThumbnailGenerator"
-#      properties:
-#        handler: "index.handler"
-#        memory: 128
-#        memory_range: null
-#        runtime: "nodejs12.x"
-#        statement_id: "lambda-c776234f-0579-4b34-a01d-49fdb4fcb5b4"
-#        timeout: 3
-#        env_vars: null
-#        concurrency: null
-#        entries: null
-#        environment: null
-#        name: "my_resizer"
-#        alias: "my_resizer_v0_1"
-#        concurrency_range: null
-#        zip_file: "X-test-ImageRes.zip"
-#        policy_file: "policy.json"
+    AwsLambdaFunction:
+      type: radon.nodes.aws.AwsLambdaFunction
+      metadata:
+        x: "935"
+        y: "242"
+        displayName: "ThumbnailGenerator"
+      properties:
+        handler: "index.handler"
+        memory: 128
+        runtime: "nodejs12.x"
+        statement_id: "lambda-c776234f-0579-4b34-a01d-49fdb4fcb5b4"
+        zip_file: "X-test-ImageRes.zip"
+        timeout: 3
+        concurrency: null
+        env_vars: null
+        name: "my_resizer"
+        alias: "my_resizer_v0_1"
 #      requirements:
 #        - host:
 #            node: AwsPlatform
