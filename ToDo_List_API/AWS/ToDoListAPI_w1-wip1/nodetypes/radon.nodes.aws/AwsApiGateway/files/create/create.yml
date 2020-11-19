@@ -12,16 +12,20 @@
         recurse: yes
       register: matched_swagger_file
 
-    - name: Check that the swagger file exists
-      stat:
-        path: "{{ matched_swagger_file.files[0].path }}"
-      register: swagger_spec
+    - name: Matched zip file
+      debug:
+        msg: "Matched swagger file: {{ matched_swagger_file.files[0].path }}"
 
-    - name: Remove the old swagger specification
-      file:
-        path: "{{ matched_swagger_file.files[0].path }}"
-        state: absent
-      when: swagger_spec.stat.exists
+#    - name: Check that the swagger file exists
+#      stat:
+#        path: "{{ matched_swagger_file.files[0].path }}"
+#      register: swagger_spec
+#
+#    - name: Remove the old swagger specification
+#      file:
+#        path: "{{ matched_swagger_file.files[0].path }}"
+#        state: absent
+#      when: swagger_spec.stat.exists
 
 #NOTE: additional check for existing swagger spec for given path
 #    - name: Check that the swagger.json exists
