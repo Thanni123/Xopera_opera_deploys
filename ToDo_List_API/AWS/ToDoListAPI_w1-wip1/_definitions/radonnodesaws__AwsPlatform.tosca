@@ -31,7 +31,7 @@ node_types:
     capabilities:
       host:
         occurrences: [ 1, UNBOUNDED ]
-        valid_source_types: [ radon.nodes.aws.AwsLambdaFunction, radon.nodes.aws.AwsS3Bucket ]
+        valid_source_types: [ radon.nodes.aws.AwsLambdaFunction, radon.nodes.aws.AwsApiGateway, radon.nodes.aws.AwsDynamoDBTable ]
         type: tosca.capabilities.Container
     interfaces:
       Standard:
