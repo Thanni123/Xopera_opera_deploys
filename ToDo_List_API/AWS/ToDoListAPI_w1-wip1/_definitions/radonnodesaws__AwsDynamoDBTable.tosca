@@ -1,9 +1,6 @@
 tosca_definitions_version: tosca_simple_yaml_1_3
 
 imports:
-  - file: toscanodes__Database.tosca
-    namespace_uri: tosca.nodes
-    namespace_prefix: toscanodes
   - file: radonartifacts__Ansible.tosca
     namespace_uri: radon.artifacts
     namespace_prefix: radonartifacts
