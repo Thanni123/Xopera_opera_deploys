@@ -17,21 +17,21 @@ imports:
     namespace_prefix: radonrelationshipsaws
 topology_template:
   node_templates:
-#    AwsS3Bucket:
-#      type: radon.nodes.aws.AwsS3Bucket
-#      metadata:
-#        x: "405"
-#        y: "277"
-#        displayName: "sourceBucket"
-#      properties:
-#        size: "0 MB"
-#        name: "mythumbnailinputbucket"
-#        maxsize: 2
-#      requirements:
-#        - host:
-#            node: AwsPlatform
-#            relationship: con_HostedOn_1
-#            capability: host
+    AwsS3Bucket:
+      type: radon.nodes.aws.AwsS3Bucket
+      metadata:
+        x: "405"
+        y: "277"
+        displayName: "sourceBucket"
+      properties:
+        size: "0 MB"
+        name: "mythumbnailinputbucket"
+        maxsize: 2
+      requirements:
+        - host:
+            node: AwsPlatform
+            relationship: con_HostedOn_1
+            capability: host
 #        - invoker:
 #            node: AwsLambdaFunction
 #            relationship: con_AwsTriggers_0
