@@ -3,6 +3,9 @@
   vars:
     - current_directory: "{{ lookup('env','PWD') }}"
     - swagger_file: swagger.json
+    - api_title: ServerlessToDoListAPI
+    - api_version: 1.0.0
+    - api_description: a simple serverless API example
   tasks:
     - name: DEBUG INFO current directory
       debug:
