@@ -4,7 +4,7 @@
     - current_directory: "{{ lookup('env','PWD') }}"
     - swagger_file: swagger.json
   tasks:
-    - name: DEBUG INFO: current directory
+    - name: DEBUG INFO current directory
       debug:
         msg: "{{ current_directory }}"
 
