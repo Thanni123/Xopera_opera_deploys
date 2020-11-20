@@ -3,6 +3,10 @@
   vars:
     - current_directory: "{{ lookup('env','PWD') }}"
   tasks:
+    - name: DEBUG INFO current directory
+      debug:
+        msg: "{{ current_directory }}"
+
     - name: Find swagger file by name
       find:
         paths: "{{ current_directory }}"
@@ -33,4 +37,4 @@
     - name: Set the basis for API
       copy:
         content: '{ "swagger": "2.0", "info": {"title": "{{ api_title }}", "description": "{{ api_description }}", "version": "{{ api_version }}" }, "paths": {}}'
-        dest: "{{ current_directory }}"
+        dest: "{{ current_directory }}/{{ swagger_file }}"

@@ -3,9 +3,20 @@
   vars:
     - current_directory: "{{ lookup('env','PWD') }}"
   tasks:
+    - name: Find swagger file by name
+      find:
+        paths: "{{ current_directory }}"
+        patterns: "{{ swagger_file }}"
+        recurse: yes
+      register: matched_swagger_file
+
+    - name: DEBUG INFO matched swagger file
+      debug:
+        msg: "Matched zip file: {{ matched_swagger_file.files[0].path }}"
+
     - name: Deploy API gateway
       aws_api_gateway:
         state: present
-        swagger_file: "/tmp/swagger.json"
+        swagger_file: "{{ matched_swagger_file.files[0].path }}"
         stage: production
         region: "{{ aws_region }}"
