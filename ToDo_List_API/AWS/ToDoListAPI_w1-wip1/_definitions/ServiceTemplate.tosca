@@ -18,6 +18,9 @@ imports:
   - file: radonrelationshipsaws__AwsTriggers.tosca
     namespace_uri: radon.relationships.aws
     namespace_prefix: radonrelationshipsaws
+  - file: radonrelationshipsaws__ApiGatewayTriggers.tosca
+    namespace_uri: radon.relationships.aws
+    namespace_prefix: radonrelationshipsaws
 topology_template:
   node_templates:
     AwsLambdaFunction_1:
@@ -193,10 +196,10 @@ topology_template:
             node: AwsPlatform_0
             relationship: con_HostedOn_2
             capability: host
-#        - invoker:
-#            node: AwsLambdaFunction_0
-#            relationship: con_ApiGatewayTriggers_0
-#            capability: invocable
+        - invoker:
+            node: AwsLambdaFunction_0
+            relationship: con_ApiGatewayTriggers_0
+            capability: invocable
 #        - invoker:
 #            node: AwsLambdaFunction_1
 #            relationship: con_ApiGatewayTriggers_1
@@ -230,11 +233,11 @@ topology_template:
       type: tosca.relationships.HostedOn
     con_ConnectsTo_2:
       type: tosca.relationships.ConnectsTo
-#    con_ApiGatewayTriggers_0:
-#      type: radon.relationships.aws.ApiGatewayTriggers
-#      properties:
-#        endpoint: "/todos"
-#        http_methods: "get"
+    con_ApiGatewayTriggers_0:
+      type: radon.relationships.aws.ApiGatewayTriggers
+      properties:
+        endpoint: "/todos"
+        http_methods: "get"
     con_ConnectsTo_3:
       type: tosca.relationships.ConnectsTo
     con_ConnectsTo_4:

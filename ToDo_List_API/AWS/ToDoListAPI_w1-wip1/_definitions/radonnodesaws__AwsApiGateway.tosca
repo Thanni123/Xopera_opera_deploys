@@ -66,5 +66,9 @@ node_types:
         operations:
           create:
             implementation:
+              primary: /nodetypes/radon.nodes.aws/AwsApiGateway/files/create/create.yml
+              timeout: 0
+          configure:
+            implementation:
               primary: /nodetypes/radon.nodes.aws/AwsApiGateway/files/configure/configure.yml
               timeout: 0

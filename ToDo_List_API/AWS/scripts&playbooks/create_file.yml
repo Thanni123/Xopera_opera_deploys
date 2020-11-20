@@ -1,0 +1,14 @@
+---
+- hosts: all
+  vars:
+    - current_directory: "{{ lookup('env','PWD') }}"
+    - swagger_file: swagger.json
+  tasks:
+    - name: DEBUG INFO: current directory
+      debug:
+        msg: "{{ current_directory }}"
+
+    - name: Initialize empty swagger.json if it does not exist
+      file:
+        path: "{{ current_directory }}/{{ swagger_file }}"
+        state: touch
