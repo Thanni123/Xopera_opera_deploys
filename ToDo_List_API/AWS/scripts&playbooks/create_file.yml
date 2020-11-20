@@ -8,7 +8,34 @@
       debug:
         msg: "{{ current_directory }}"
 
+    - name: Find swagger file by name
+      find:
+        paths: "{{ current_directory }}"
+        patterns: "{{ swagger_file }}"
+        recurse: yes
+      register: matched_swagger_file
+
+    - name: DEBUG INFO: Matched swagger file
+      debug:
+        msg: "Matched zip file: {{ matched_swagger_file.files[0].path }}"
+
+    - name: Check that the swagger.json exists
+      stat:
+        path: "{{ matched_swagger_file.files[0].path }}"
+      register: swagger_spec
+
+    - name: remove the old swagger specification
+      file:
+        path: "{{ matched_swagger_file.files[0].path }}"
+        state: absent
+      when: swagger_spec.stat.exists
+
     - name: Initialize empty swagger.json if it does not exist
       file:
         path: "{{ current_directory }}/{{ swagger_file }}"
         state: touch
+
+    - name: Set the basis for API
+      copy:
+        content: '{ "swagger": "2.0", "info": {"title": "{{ api_title }}", "description": "{{ api_description }}", "version": "{{ api_version }}" }, "paths": {}}'
+        dest: "{{ current_directory }}/{{ swagger_file }}"
