@@ -200,22 +200,22 @@ topology_template:
             node: AwsLambdaFunction_0
             relationship: con_ApiGatewayTriggers_0
             capability: invocable
-#        - invoker:
-#            node: AwsLambdaFunction_1
-#            relationship: con_ApiGatewayTriggers_1
-#            capability: invocable
-#        - invoker:
-#            node: AwsLambdaFunction_2
-#            relationship: con_ApiGatewayTriggers_2
-#            capability: invocable
-#        - invoker:
-#            node: AwsLambdaFunction_3
-#            relationship: con_ApiGatewayTriggers_3
-#            capability: invocable
-#        - invoker:
-#            node: AwsLambdaFunction_4
-#            relationship: con_ApiGatewayTriggers_4
-#            capability: invocable
+        - invoker:
+            node: AwsLambdaFunction_1
+            relationship: con_ApiGatewayTriggers_1
+            capability: invocable
+        - invoker:
+            node: AwsLambdaFunction_2
+            relationship: con_ApiGatewayTriggers_2
+            capability: invocable
+        - invoker:
+            node: AwsLambdaFunction_3
+            relationship: con_ApiGatewayTriggers_3
+            capability: invocable
+        - invoker:
+            node: AwsLambdaFunction_4
+            relationship: con_ApiGatewayTriggers_4
+            capability: invocable
   relationship_templates:
     con_HostedOn_2:
       type: tosca.relationships.HostedOn
@@ -242,27 +242,27 @@ topology_template:
       type: tosca.relationships.ConnectsTo
     con_ConnectsTo_4:
       type: tosca.relationships.ConnectsTo
-#    con_ApiGatewayTriggers_4:
-#      type: radon.relationships.aws.ApiGatewayTriggers
-#      properties:
-#        endpoint: "/todos/{id}"
-#        http_methods: "delete"
-#    con_ApiGatewayTriggers_3:
-#      type: radon.relationships.aws.ApiGatewayTriggers
-#      properties:
-#        endpoint: "/todos/{id}"
-#        http_methods: "put"
-#    con_ApiGatewayTriggers_2:
-#      type: radon.relationships.aws.ApiGatewayTriggers
-#      properties:
-#        endpoint: "/todos"
-#        http_methods: "post"
+    con_ApiGatewayTriggers_4:
+      type: radon.relationships.aws.ApiGatewayTriggers
+      properties:
+        endpoint: "/todos/{id}"
+        http_methods: "delete"
+    con_ApiGatewayTriggers_3:
+      type: radon.relationships.aws.ApiGatewayTriggers
+      properties:
+        endpoint: "/todos/{id}"
+        http_methods: "put"
+    con_ApiGatewayTriggers_2:
+      type: radon.relationships.aws.ApiGatewayTriggers
+      properties:
+        endpoint: "/todos"
+        http_methods: "post"
     con_ConnectsTo_0:
       type: tosca.relationships.ConnectsTo
     con_ConnectsTo_1:
       type: tosca.relationships.ConnectsTo
-#    con_ApiGatewayTriggers_1:
-#      type: radon.relationships.aws.ApiGatewayTriggers
-#      properties:
-#        endpoint: "/todos/{id}"
-#        http_methods: "get"
+    con_ApiGatewayTriggers_1:
+      type: radon.relationships.aws.ApiGatewayTriggers
+      properties:
+        endpoint: "/todos/{id}"
+        http_methods: "get"
