@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: localhost
   vars:
     - current_directory: "{{ lookup('env','PWD') }}"
     - swagger_file: swagger.json
