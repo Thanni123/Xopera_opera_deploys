@@ -10,7 +10,7 @@
         recurse: yes
       register: matched_swagger_file
 
-    - name: DEBUG INFO: Matched swagger file
+    - name: DEBUG INFO matched swagger file
       debug:
         msg: "Matched zip file: {{ matched_swagger_file.files[0].path }}"
 
