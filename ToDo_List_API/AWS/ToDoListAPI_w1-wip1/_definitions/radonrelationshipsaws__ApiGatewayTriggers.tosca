@@ -42,6 +42,6 @@ relationship_types:
         operations:
           pre_configure_source:
             implementation:
-              primary: pre_configure_source.yml
+              primary: /relationshiptypes/radon.relationships.aws/ApiGatewayTriggers/files/pre_configure_source.yml
               dependencies: [ generator.py ]
               timeout: 0
