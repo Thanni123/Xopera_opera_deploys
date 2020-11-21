@@ -74,7 +74,7 @@ topology_template:
         displayName: "AzurePlatform"
       properties:
         name: "Azure"
-        region: "germanywest"
+        region: "westeurope"
   relationship_templates:
     con_HostedOn_2:
       type: tosca.relationships.HostedOn
