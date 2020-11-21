@@ -15,7 +15,7 @@
     - name: Create a resource group
       command: >
          az group create
-         -l "{{ resource_group_name }}"
+         -l "{{ location }}"
          -n "{{ resource_group }}"
 
 #    - name: Create storage account
