@@ -15,6 +15,10 @@ relationship_types:
       http_methods:
         type: string
         description: List of HTTP methods
+      swagger_file:
+        description: Specification of swagger file name
+        type: string
+        required: true
     interfaces:
       Configure:
         type: tosca.interfaces.relationship.Configure
@@ -39,6 +43,10 @@ relationship_types:
             type: string
             required: true
             default: { get_property: [ SELF, http_methods ] }
+          swagger_file:
+            type: string
+            required: true
+            default: { get_property: [ SELF, swagger_file ] }
         operations:
           pre_configure_source:
             implementation:

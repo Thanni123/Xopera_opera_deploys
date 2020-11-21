@@ -2,12 +2,17 @@
 - name: configure AWS
   hosts: localhost
   gather_facts: false
-  tasks:  
+  tasks:
+    - name: Find swagger file by name
+      find:
+        paths: "{{ current_directory }}"
+        patterns: "{{ swagger_file }}"
+        recurse: yes
+      register: matched_swagger_file
+
+    - name: DEBUG INFO matched swagger file
+      debug:
+        msg: "Matched zip file: {{ matched_swagger_file.files[0].path }}"
+
     - name: Run simple generation script
-      command: /usr/bin/python3 generator.py /tmp/swagger.json {{ endpoint }} {{ http_methods }} {{ aws_region }} {{ function_arn }} {{ role_arn }}
-      
-    #- name: remove the temporary swagger specification
-    #  file:
-    #    path: "{{ swagger_spec.path }}"
-    #    state: absent
-    #    when: swagger_spec.path is defined
+      command: /usr/bin/python3 generator.py {{ matched_swagger_file.files[0].path }} {{ endpoint }} {{ http_methods }} {{ aws_region }} {{ function_arn }} {{ role_arn }}

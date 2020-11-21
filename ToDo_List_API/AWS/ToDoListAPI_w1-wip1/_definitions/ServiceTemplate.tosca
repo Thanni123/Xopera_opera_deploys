@@ -238,6 +238,7 @@ topology_template:
       properties:
         endpoint: "/todos"
         http_methods: "get"
+        swagger_file: "swagger.json"
     con_ConnectsTo_3:
       type: tosca.relationships.ConnectsTo
     con_ConnectsTo_4:
@@ -247,16 +248,19 @@ topology_template:
       properties:
         endpoint: "/todos/{id}"
         http_methods: "delete"
+        swagger_file: "swagger.json"
     con_ApiGatewayTriggers_3:
       type: radon.relationships.aws.ApiGatewayTriggers
       properties:
         endpoint: "/todos/{id}"
         http_methods: "put"
+        swagger_file: "swagger.json"
     con_ApiGatewayTriggers_2:
       type: radon.relationships.aws.ApiGatewayTriggers
       properties:
         endpoint: "/todos"
         http_methods: "post"
+        swagger_file: "swagger.json"
     con_ConnectsTo_0:
       type: tosca.relationships.ConnectsTo
     con_ConnectsTo_1:
@@ -266,3 +270,4 @@ topology_template:
       properties:
         endpoint: "/todos/{id}"
         http_methods: "get"
+        swagger_file: "swagger.json"
