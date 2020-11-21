@@ -30,6 +30,15 @@
          --resource-group "{{ resource_group }}"
 
 #NOTE: Azure Blob Storages
+    - name: List storage account keys
+      command: >
+         az storage account keys list
+         -g "{{ resource_group }}"
+         -n "{{ storage_account_name }}"
+      register: storage_account_keys_list_output
+
+    - debug: var=storage_account_keys_list_output.stdout
+
 #    - name: Az role assginment for creating blob storage
 #      command: >
 #         az role assignment create
@@ -37,12 +46,12 @@
 #         --assignee "{{ myemail }}"
 #         --scope "/subscriptions/"{{ sub_id }}"/resourceGroups/"{{ resource_group }}"/providers/Microsoft.Storage/storageAccounts/"{{ storage_account_name }}"/blobServices/default/containers/"{{ container_name1 }}""
 
-    - name: Create storage container1
-      command: >
-         az storage container create
-         --account-name "{{ storage_account_name }}"
-         -n "{{ container_name1 }}"
-         --auth-mode key
+#    - name: Create storage container1
+#      command: >
+#         az storage container create
+#         --account-name "{{ storage_account_name }}"
+#         -n "{{ container_name1 }}"
+#         --auth-mode key
 
 #    - name: Create storage container2
 #      command: >
