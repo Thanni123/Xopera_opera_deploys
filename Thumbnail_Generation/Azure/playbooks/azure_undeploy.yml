@@ -39,12 +39,12 @@
          -n "{{ function_app_name }}"
 
 #NOTE: Azure Blob Storages
-    - name: Delete storage container1
-      command: >
-         az storage container delete
-         -n "{{ container_name1 }}"
+#    - name: Delete storage container1
+#      command: >
+#         az storage container delete
+#         -n "{{ container_name1 }}"
 
-    - name: Delete storage container2
-      command: >
-         az storage container delete
-         -n "{{ container_name2 }}"
+#    - name: Delete storage container2
+#      command: >
+#         az storage container delete
+#         -n "{{ container_name2 }}"
