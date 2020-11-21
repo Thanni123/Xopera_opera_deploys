@@ -66,13 +66,13 @@
          --src "{{ zip_file_matched_subdirectory.files[0].path }}"
 
 #NOTE: Azure Blob Storage_1
-    - name: Create storage container
+    - name: Create storage container1
       command: >
          az storage container create
          -n "{{ container_name1 }}"
 
 #NOTE: Azure Blob Storage_2
-    - name: Create storage container
+    - name: Create storage container2
       command: >
          az storage container create
-         -n "{{ container_name }}"
+         -n "{{ container_name2 }}"
