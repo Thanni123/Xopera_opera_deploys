@@ -3,7 +3,7 @@
   hosts: localhost
   vars:
     resource_group: thumbnailgeneration-rg
-    location: germanywest
+    location: westeurope
     resource_group_name: newresourcegroupforthanh
     storage_account_name: newstorageaccountforthanh
   tasks:
