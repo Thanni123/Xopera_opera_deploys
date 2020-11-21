@@ -70,7 +70,7 @@
       command: >
          az storage container create
          -n "{{ container_name1 }}"
-         --account-key "{{ storage_account_name }}"
+         --auth-mode login
 
 #    - name: Create storage container2
 #      command: >
