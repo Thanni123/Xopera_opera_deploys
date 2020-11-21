@@ -57,12 +57,12 @@
          --functions-version 2
          --plan "{{ app_serviceplan }}"
 
-    - name: Deploy code to Azure function
-      command: >
-         az functionapp deployment source config-zip
-         -g "{{ resource_group }}"
-         -n "{{ function_app_name }}"
-         --src "{{ zip_file_matched_subdirectory.files[0].path }}"
+#    - name: Deploy code to Azure function
+#      command: >
+#         az functionapp deployment source config-zip
+#         -g "{{ resource_group }}"
+#         -n "{{ function_app_name }}"
+#         --src "{{ zip_file_matched_subdirectory.files[0].path }}"
 
 #NOTE: Azure Blob Storages
     - name: Create storage container1
