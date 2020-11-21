@@ -1,18 +1,12 @@
 ---
 - hosts: all
-  vars:
-    - current_directory: "{{ lookup('env','PWD') }}"
   tasks:
     - name: Find swagger file by name
       find:
-        paths: "{{ current_directory }}"
+        paths: "/tmp/"
         patterns: "{{ swagger_file }}"
         recurse: yes
       register: matched_swagger_file
-
-    - name: DEBUG INFO matched swagger file
-      debug:
-        msg: "Matched zip file: {{ matched_swagger_file.files[0].path }}"
 
     - name: Deploy API gateway
       aws_api_gateway:
