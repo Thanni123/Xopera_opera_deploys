@@ -13,20 +13,25 @@
     - name: Matched zip file
       debug:
         msg: "Matched zip file: {{ zip_file_matched_subdirectory.files[0].path }}"
-#NOTE: Comment out, since issues with creating function app
-# "Failed to import the required Python library (ansible[azure] azure >= 2.0.0)"
 
-#    - name: Create a function app
-#      azure_rm_functionapp:
-#        resource_group: "{{ app_resource_group }}" #myResourceGroupforThumnailGen
-#        name: "{{ function_name }}"
-#        storage_account: "{{ app_storage_account }}" #mystorageaccount3194
+    - name: Create appservice plan for Azure Function
+      command: >
+         az appservice plan create
+         -g "{{ resource_group }}"
+         -n "{{ app_serviceplan }}"
 
-#NOTE: replace this line below with line in task below for later deploy
-#         -n "{{ function_name }}"
+    - name: Create Azure Function
+      command: >
+         az functionapp create
+         -g "{{ resource_group }}"
+         -n "{{ function_app_name }}"
+         -s "{{ storage_account_name }}"
+         --functions-version 2
+         --plan "{{ app_serviceplan }}"
+
     - name: Deploy code to Azure function
       command: >
          az functionapp deployment source config-zip
-         -g "{{ app_resource_group }}"
-         -n mythumbnailfunctionapp
+         -g "{{ resource_group }}"
+         -n "{{ function_app_name }}"
          --src "{{ zip_file_matched_subdirectory.files[0].path }}"
