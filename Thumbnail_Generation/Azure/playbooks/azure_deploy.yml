@@ -2,13 +2,9 @@
 - name: Configure Azure
   hosts: localhost
   vars:
-    resource_group: thumbnailgeneration-rg
     location: westeurope
+    resource_group: thumbnailgeneration-rg
     storage_account_name: storageaccforthanh
-    current_directory: "{{ lookup('env', 'PWD') }}"
-    function_app_name: myimageresizerappv01
-    zip_file: X-test-ImageRes.zip
-    app_serviceplan: ThumbnailFunctionPlan
     container_name1: inputBucket
     container_name2: outputBucket
   tasks:
