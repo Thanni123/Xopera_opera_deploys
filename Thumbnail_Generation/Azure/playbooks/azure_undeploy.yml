@@ -19,12 +19,12 @@
 #         -n "{{ resource_group }}"
 #         -y
 
-    - name: Delete storage account
-      command: >
-         az storage account delete
-         -n "{{ storage_account_name }}"
-         -g "{{ resource_group }}"
-         -y
+#    - name: Delete storage account
+#      command: >
+#         az storage account delete
+#         -n "{{ storage_account_name }}"
+#         -g "{{ resource_group }}"
+#         -y
 
 #NOTE: Azure Function
     - name: Delete appservice plan for Azure Function
