@@ -34,7 +34,7 @@ relationship_types:
           role_arn:
             type: string
             required: true
-            default: { get_attribute: [ TARGET, role_arn ] }
+            default: { get_attribute: [ TARGET, host, role_arn ] }
           function_arn:
             type: string
             required: true
