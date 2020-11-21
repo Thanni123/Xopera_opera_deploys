@@ -1,47 +1,19 @@
 ---
-- name: Install necessary packages for azure, create resource_group and storage_account
-  hosts: localhost
-  vars:
-    resource_group_name: myResourceGroupforThumnailGen #global-serverless-resource-group
-    storage_account_name: mystorageaccount3194 #global-serverless-storage-account
+- hosts: localhost
   tasks:
     - name: install azure-cli
       pip:
         name: azure-cli
         state: present
 
-    - name: install azure-functions
-      pip:
-        name: azure-functions
-        state: present
-
-    - name: azure login
+    - name: Create a resource group
       command: >
-         az login
-         -u "{{ user_name }}"
-         -p "{{ password }}"
+         az group create
+         -l "{{ location }}"
+         -n "{{ resource_group }}"
 
-#NOTE: Comment out, since issues with creating app_resource_group, app_storage_account
-# "Failed to import the required Python library (ansible[azure] azure >= 2.0.0)"
-
-#    - name: Create a resource group
-#      azure_rm_resourcegroup:
-#        name: "{{ resource_group_name }}"
-#        location: "{{ region }}"
-#      register: azure_rm_resourcegroup_response
-
-#    - name: Create storage account
-#      azure_rm_storageaccount:
-#        resource_group: "{{ resource_group_name }}"
-#        name: "{{ storage_account_name }}"
-#        type: Standard_RAGRS
-#      register: azure_rm_storageaccount_response
-
-    - name: Set attributes
-      set_stats:
-        data:
-#NOTE: For testing reason, read hardcorded pre created app_resource_group && app_storage_account
-          app_resource_group: "{{ resource_group_name }}"
-          app_storage_account: "{{ storage_account_name }}"
-#          app_resource_group: "{{ azure_rm_resourcegroup_response.state.name }}"
-#          app_storage_account: "{{ azure_rm_storageaccount_response.state.name }}"
+    - name: Create storage account
+      command: >
+         az storage account create
+         --name "{{ storage_account_name }}"
+         --resource-group "{{ resource_group }}"
