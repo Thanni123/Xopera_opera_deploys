@@ -32,6 +32,7 @@
          az appservice plan delete
          -g "{{ resource_group }}"
          -n "{{ app_serviceplan }}"
+         --yes
 
     - name: Delete Azure Function
       command: >
