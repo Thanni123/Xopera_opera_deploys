@@ -4,7 +4,7 @@
   vars:
     resource_group: thumbnailgeneration-rg
     location: germanywest
-    resource_group_name: myResourceGroupforThumnailGen
+    resource_group_name: newresourcegroupforthanh
     storage_account_name: newstorageaccountforthanh
   tasks:
     - name: install azure-cli
