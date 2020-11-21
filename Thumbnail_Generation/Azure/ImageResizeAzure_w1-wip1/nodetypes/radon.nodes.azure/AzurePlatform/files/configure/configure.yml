@@ -1,5 +1,8 @@
 ---
 - hosts: localhost
+  vars:
+    - resource_group: serverlessresourcegroup
+    - storage_account: serverlessstorageac
   tasks:
     - name: install azure-cli
       pip:
@@ -9,11 +12,17 @@
     - name: Create a resource group
       command: >
          az group create
-         -l "{{ location }}"
+         -l "{{ region }}"
          -n "{{ resource_group }}"
 
     - name: Create storage account
       command: >
          az storage account create
-         --name "{{ storage_account_name }}"
+         --name "{{ storage_account }}"
          --resource-group "{{ resource_group }}"
+
+    - name: Set attributes
+      set_stats:
+        data:
+          app_resource_group: "{{ resource_group }}"
+          app_storage_account: "{{ storage_account }}"

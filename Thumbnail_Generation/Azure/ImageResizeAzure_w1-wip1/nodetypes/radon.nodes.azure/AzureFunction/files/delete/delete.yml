@@ -1,14 +1,8 @@
 - name: Undeploy Azure Blob Storage
   hosts: localhost
   tasks:
-    - debug:
-        msg: "Azure Function {{ function_name }} deleted."
-
-#NOTE: Comment out, since issues with deleting function app
-# "Failed to import the required Python library (ansible[azure] azure >= 2.0.0)"
-
-#    - name: Delete a function app
-#      azure_rm_functionapp:
-#        resource_group: "{{ app_resource_group }}"
-#        name: "{{ function_name }}"
-#        state: absent
+    - name: Delete Azure Function
+      command: >
+         az functionapp delete
+         -g "{{ app_resource_group }}"
+         -n "{{ function_name }}"

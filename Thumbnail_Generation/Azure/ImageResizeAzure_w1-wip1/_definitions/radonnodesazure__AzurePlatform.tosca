@@ -26,14 +26,6 @@ node_types:
         type: string
         required: true
         status: supported
-      user_name:
-        type: string
-        required: false
-        status: supported
-      password:
-        type: string
-        required: false
-        status: supported
     capabilities:
       host:
         occurrences: [ 1, UNBOUNDED ]
@@ -47,20 +39,8 @@ node_types:
             type: string
             required: true
             default: { get_property: [ SELF, region ] }
-          user_name:
-            type: string
-            required: false
-            default: { get_property: [ SELF, user_name ] }
-          password:
-            type: string
-            required: false
-            default: { get_property: [ SELF, password ] }
         operations:
-          create:
+          configure:
             implementation:
               primary: /nodetypes/radon.nodes.azure/AzurePlatform/files/configure/configure.yml
-              timeout: 0
-          delete:
-            implementation:
-              primary: /nodetypes/radon.nodes.azure/AzurePlatform/files/uninstall.yml
               timeout: 0

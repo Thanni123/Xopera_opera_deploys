@@ -73,8 +73,6 @@ topology_template:
         y: "655"
         displayName: "AzurePlatform"
       properties:
-        password: "03011994Erfi"
-        user_name: "truong1942@outlook.com"
         name: "Azure"
         region: "germanywest"
   relationship_templates:

@@ -20,13 +20,6 @@ node_types:
       abstract: "false"
       final: "false"
       targetNamespace: "radon.nodes.azure"
-    attributes:
-      app_resource_group:
-        description: App resource group identifier
-        type: string
-      app_storage_account:
-        description: App storage account identifier
-        type: string
     properties:
       zip_file:
         type: string
