@@ -35,7 +35,7 @@
          az role assignment create
          --role "Storage Blob Data Contributor"
          --assignee "{{ myemail }}"
-         --scope "/subscriptions/"{{ sub_id }}"/resourceGroups/"{{ resource_group }}"/providers/Microsoft.Storage/storageAccounts/"{{ storage_account_name }}"/blobServices/default/containers/"{{ container1 }}"
+         --scope "/subscriptions/"{{ sub_id }}"/resourceGroups/"{{ resource_group }}"/providers/Microsoft.Storage/storageAccounts/"{{ storage_account_name }}"/blobServices/default/containers/"{{ container1 }}""
 
 #    - name: Create storage container1
 #      command: >
