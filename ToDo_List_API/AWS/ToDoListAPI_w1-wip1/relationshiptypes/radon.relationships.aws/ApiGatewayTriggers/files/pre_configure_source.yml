@@ -1,6 +1,6 @@
 ---
 - name: configure AWS
-  hosts: localhost
+  hosts: all
   gather_facts: false
   tasks:
     - name: Find swagger file by name _pre_configure_source.yml
