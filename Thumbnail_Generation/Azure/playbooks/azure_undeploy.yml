@@ -18,6 +18,7 @@
       command: >
          az group delete
          -n "{{ resource_group }}"
+         -y
 
     - name: Delete storage account
       command: >
