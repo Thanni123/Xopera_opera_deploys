@@ -34,11 +34,11 @@ node_types:
           node: radon.nodes.aws.AwsPlatform
           relationship: tosca.relationships.HostedOn
           occurrences: [ 1, 1 ]
-#      - invoker:
-#          capability: radon.capabilities.Invocable
-#          node: radon.nodes.aws.AwsLambdaFunction
-#          relationship: radon.relationships.aws.ApiGatewayTriggers
-#          occurrences: [ 0, UNBOUNDED ]
+      - invoker:
+          capability: radon.capabilities.Invocable
+          node: radon.nodes.aws.AwsLambdaFunction
+          relationship: radon.relationships.aws.ApiGatewayTriggers
+          occurrences: [ 0, UNBOUNDED ]
     interfaces:
       Standard:
         type: tosca.interfaces.node.lifecycle.Standard
