@@ -40,7 +40,7 @@
     - set_fact:
         my_list: "{{ storage_account_keys_list_output | map(attribute='value' | list )}}"
 
-    - debug: var=storage_account_keys_list_output.stdout
+    - debug: "My list: {{ my_list }}"
 
 #    - name: Az role assginment for creating blob storage
 #      command: >
