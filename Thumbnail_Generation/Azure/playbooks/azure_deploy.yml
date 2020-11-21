@@ -38,7 +38,7 @@
       register: storage_account_keys_list_output
 
     - set_fact:
-        my_list: "{{ storage_account_keys_list_output | json_query('results[1]'='value' )}}"
+        my_list: "{{ storage_account_keys_list_output | json_query('results[1].value')}}"
 
     - debug: "{{ my_list[0] }}"
 
