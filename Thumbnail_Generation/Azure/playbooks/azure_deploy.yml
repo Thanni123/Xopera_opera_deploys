@@ -38,9 +38,9 @@
       register: storage_account_keys_list_output
 
     - set_fact:
-        my_list: "{{ storage_account_keys_list_output | json_query(''='value' | list )}}"
+        my_list: "{{ storage_account_keys_list_output | json_query('results[1]'='value' )}}"
 
-    - debug: my_list
+    - debug: my_list[0]
 
 #    - name: Az role assginment for creating blob storage
 #      command: >
