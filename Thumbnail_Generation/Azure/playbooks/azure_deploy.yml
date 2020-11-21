@@ -23,6 +23,7 @@
          az group create
          -l "{{ location }}"
          -n "{{ resource_group }}"
+      register: resource_group_info
 
     - name: Create storage account
       command: >
@@ -65,12 +66,16 @@
 #         --src "{{ zip_file_matched_subdirectory.files[0].path }}"
 
 #NOTE: Azure Blob Storages
-    - name: Create storage container1
-      command: >
-         az storage container create
-         --account-name "{{ storage_account_name }}"
-         -n "{{ container_name1 }}"
-         --auth-mode login
+    - name: Print sub_id
+      debug:
+        msg: "SubId: {{ resource_group_info.resourcegroups.id }}"
+
+#    - name: Create storage container1
+#      command: >
+#         az storage container create
+#         --account-name "{{ storage_account_name }}"
+#         -n "{{ container_name1 }}"
+#         --auth-mode login
 
 #    - name: Create storage container2
 #      command: >
