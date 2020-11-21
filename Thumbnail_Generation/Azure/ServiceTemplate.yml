@@ -44,9 +44,9 @@
       command: >
          az functionapp create
          -g "{{ resource_group }}"
-         -p serverlessPlan
          -n "{{ function_app_name }}"
          -s "{{ storage_account_name }}"
+         --functions-version 2
 
     - name: Deploy code to Azure function
       command: >
