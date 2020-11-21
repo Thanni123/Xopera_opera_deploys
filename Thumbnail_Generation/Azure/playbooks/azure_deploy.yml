@@ -65,11 +65,11 @@
          --src "{{ zip_file_matched_subdirectory.files[0].path }}"
 
 #NOTE: Azure Blob Storages
-#    - name: Create storage container1
-#      command: >
-#         az storage container create
-#         -n "{{ container_name1 }}"
-#         --auth-mode login
+    - name: Create storage container1
+      command: >
+         az storage container create
+         -n "{{ container_name1 }}"
+         --auth-mode login
 
 #    - name: Create storage container2
 #      command: >
