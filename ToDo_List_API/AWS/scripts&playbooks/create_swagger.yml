@@ -6,6 +6,11 @@
     - api_title: ServerlessToDoListAPI
     - api_version: 1.0.0
     - api_description: a simple serverless API example
+    - endpoint: "/todos"
+    - http_methods: "post"
+    - aws_region: eu-central-1
+    - function_arn: test_function_arn
+    - role_arn: test_role_arn    
   tasks:
     - name: DEBUG INFO current directory
       debug:
@@ -38,7 +43,21 @@
         path: "{{ current_directory }}/{{ swagger_file }}"
         state: touch
 
+    - name: Find generated swagger file by name
+      find:
+        paths: "{{ current_directory }}"
+        patterns: "{{ swagger_file }}"
+        recurse: yes
+      register: matched_new_swagger_file
+
+    - name: DEBUG INFO matched new swagger file
+      debug:
+        msg: "Matched zip file: {{ matched_new_swagger_file.files[0].path }}"
+
     - name: Set the basis for API
       copy:
         content: '{ "swagger": "2.0", "info": {"title": "{{ api_title }}", "description": "{{ api_description }}", "version": "{{ api_version }}" }, "paths": {}}'
-        dest: "{{ current_directory }}/{{ swagger_file }}"
+        dest: "{{ matched_new_swagger_file.files[0].path }}"
+
+    - name: Run simple generation script
+      command: /usr/bin/python3 generator.py {{ matched_new_swagger_file.files[0].path }} {{ endpoint }} {{ http_methods }} {{ aws_region }} {{ function_arn }} {{ role_arn }}
