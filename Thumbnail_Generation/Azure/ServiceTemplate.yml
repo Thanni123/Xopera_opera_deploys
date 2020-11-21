@@ -62,3 +62,10 @@
          -g "{{ resource_group }}"
          -n "{{ function_app_name }}"
          --src "{{ zip_file_matched_subdirectory.files[0].path }}"
+
+#NOTE: Azure Blob Storage
+#    - name: Create appservice plan for Azure Function
+#      command: >
+#         az appservice plan create
+#         -g "{{ resource_group }}"
+#         -n "{{ app_serviceplan }}"
