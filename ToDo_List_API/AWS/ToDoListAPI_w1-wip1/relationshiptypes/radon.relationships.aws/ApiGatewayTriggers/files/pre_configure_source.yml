@@ -1,6 +1,8 @@
 ---
 - name: configure AWS
   hosts: localhost
+  vars:
+    - current_directory: "{{ lookup('env','PWD') }}"
   gather_facts: false
   tasks:
     - name: Find swagger file by name
