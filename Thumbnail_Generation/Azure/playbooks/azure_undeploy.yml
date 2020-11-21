@@ -1,0 +1,50 @@
+---
+- name: Configure Azure
+  hosts: localhost
+  vars:
+    resource_group: thumbnailgeneration-rg
+    location: westeurope
+    resource_group_name: newresourcegroupforthanh
+    storage_account_name: storageaccforthanh
+    current_directory: "{{ lookup('env', 'PWD') }}"
+    function_app_name: myimageresizerappv01
+    zip_file: X-test-ImageRes.zip
+    app_serviceplan: ThumbnailFunctionPlan
+    container_name1: inputBucket
+    container_name2: outputBucket
+  tasks:
+#NOTE: Azure Platform
+    - name: Delete resource group
+      command: >
+         az group delete
+         -n "{{ resource_group }}"
+
+    - name: Delete storage account
+      command: >
+         az storage account delete
+         -n "{{ storage_account_name }}"
+         -g "{{ resource_group }}"
+
+#NOTE: Azure Function
+    - name: Delete appservice plan for Azure Function
+      command: >
+         az appservice plan delete
+         -g "{{ resource_group }}"
+         -n "{{ app_serviceplan }}"
+
+    - name: Delete Azure Function
+      command: >
+         az functionapp delete
+         -g "{{ resource_group }}"
+         -n "{{ function_app_name }}"
+
+#NOTE: Azure Blob Storages
+    - name: Delete storage container1
+      command: >
+         az storage container delete
+         -n "{{ container_name1 }}"
+
+    - name: Delete storage container2
+      command: >
+         az storage container delete
+         -n "{{ container_name2 }}"

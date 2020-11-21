@@ -19,7 +19,7 @@
         name: azure-cli
         state: present
 
-    - name: Create a resource group
+    - name: Create resource group
       command: >
          az group create
          -l "{{ location }}"
@@ -49,7 +49,7 @@
          -g "{{ resource_group }}"
          -n "{{ app_serviceplan }}"
 
-    - name: Create a Azure Function
+    - name: Create Azure Function
       command: >
          az functionapp create
          -g "{{ resource_group }}"
@@ -65,13 +65,12 @@
          -n "{{ function_app_name }}"
          --src "{{ zip_file_matched_subdirectory.files[0].path }}"
 
-#NOTE: Azure Blob Storage_1
+#NOTE: Azure Blob Storages
     - name: Create storage container1
       command: >
          az storage container create
          -n "{{ container_name1 }}"
-
-#NOTE: Azure Blob Storage_2
+         
     - name: Create storage container2
       command: >
          az storage container create
