@@ -26,10 +26,6 @@ node_types:
         description: path to a function zip file
         required: true
         status: supported
-      function_name:
-        type: string
-        required: true
-        status: supported
     requirements:
       - host:
           capability: tosca.capabilities.Container
@@ -51,7 +47,7 @@ node_types:
           function_name:
             type: string
             required: true
-            default: { get_property: [ SELF, function_name ] }
+            default: { get_property: [ SELF, name ] }
           zip_file:
             type: string
             required: true

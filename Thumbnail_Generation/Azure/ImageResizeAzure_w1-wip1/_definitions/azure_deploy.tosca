@@ -24,8 +24,7 @@ topology_template:
         y: "323"
         displayName: "AzureFunction"
       properties:
-        name: "my_resizer"
-        function_name: "my_resizer_function"
+        name: "myresizerfunction"
         zip_file: "X-test-ImageRes.zip"
       requirements:
         - host:
