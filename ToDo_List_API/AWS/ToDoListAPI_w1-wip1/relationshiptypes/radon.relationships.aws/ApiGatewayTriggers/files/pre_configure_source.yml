@@ -8,7 +8,7 @@
   tasks:
     - name: Find swagger file by name
       find:
-        paths: "{{ current_directory }}"
+        paths: "../../../_definitions"
         patterns: "{{ swagger_file }}"
         recurse: yes
       register: matched_swagger_file
