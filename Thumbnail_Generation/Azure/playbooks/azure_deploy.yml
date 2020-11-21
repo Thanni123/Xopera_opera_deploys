@@ -70,8 +70,9 @@
       command: >
          az storage container create
          -n "{{ container_name1 }}"
-         
-    - name: Create storage container2
-      command: >
-         az storage container create
-         -n "{{ container_name2 }}"
+         --public-access blob
+
+#    - name: Create storage container2
+#      command: >
+#         az storage container create
+#         -n "{{ container_name2 }}"
