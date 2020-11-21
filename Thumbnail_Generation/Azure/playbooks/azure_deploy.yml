@@ -5,8 +5,10 @@
     location: westeurope
     resource_group: thumbnailgeneration-rg
     storage_account_name: storageaccforthanh
+    sub_id: b988f1e0-3bed-4eae-bbc2-56e26230fd86
     container_name1: inputBucket
     container_name2: outputBucket
+    myemail: truong1942@outlook.com
   tasks:
 #NOTE: Azure Platform
     - name: install azure-cli
@@ -28,8 +30,12 @@
          --resource-group "{{ resource_group }}"
 
 #NOTE: Azure Blob Storages
-    - debug:
-        msg: "SubId: {{ resource_group_info.resourcegroups.id }}"
+    - name: Az role assginment for creating blob storage
+      command: >
+         az role assignment create
+         --role "Storage Blob Data Contributor"
+         --assignee "{{ myemail }}"
+         --scope "/subscriptions/"{{ sub_id }}"/resourceGroups/"{{ resource_group }}"/providers/Microsoft.Storage/storageAccounts/"{{ storage_account_name }}"/blobServices/default/containers/"{{ container1 }}"
 
 #    - name: Create storage container1
 #      command: >
