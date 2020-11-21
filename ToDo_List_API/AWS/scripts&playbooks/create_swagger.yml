@@ -10,7 +10,7 @@
     - http_methods: "post"
     - aws_region: eu-central-1
     - function_arn: test_function_arn
-    - role_arn: test_role_arn    
+    - role_arn: test_role_arn
   tasks:
     - name: DEBUG INFO current directory
       debug:
@@ -56,7 +56,7 @@
 
     - name: Set the basis for API
       copy:
-        content: '{ "swagger": "2.0", "info": {"title": "{{ api_title }}", "description": "{{ api_description }}", "version": "{{ api_version }}" }, "paths": {}}'
+        content: '{ "test": "blabla", "swagger": "2.0", "info": {"title": "{{ api_title }}", "description": "{{ api_description }}", "version": "{{ api_version }}" }, "paths": {}}'
         dest: "{{ matched_new_swagger_file.files[0].path }}"
 
     - name: Run simple generation script
