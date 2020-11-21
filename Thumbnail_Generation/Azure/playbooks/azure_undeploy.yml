@@ -27,19 +27,11 @@
 #         -y
 
 #NOTE: Azure Function
-#    - name: Delete appservice plan for Azure Function
-#      command: >
-#         az appservice plan delete
-#         -g "{{ resource_group }}"
-#         -n "{{ app_serviceplan }}"
-#         -y
-
     - name: Delete Azure Function
       command: >
          az functionapp delete
          -g "{{ resource_group }}"
          -n "{{ function_app_name }}"
-         -y
 
 #NOTE: Azure Blob Storages
 #    - name: Delete storage container1
