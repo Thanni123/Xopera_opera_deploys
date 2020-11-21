@@ -43,10 +43,9 @@
     - name: Create a Azure Function
       command: >
          az functionapp create
-         --name "{{ function_app_name }}"
-         --resource-group "{{ resource_group }}"
-         --storage-account "{{ storage_account_name }}"
-         --functions-version {2, 0}
+         -g "{{ resource_group }}"
+         -n "{{ function_app_name }}"
+         -s "{{ storage_account_name }}"
 
     - name: Deploy code to Azure function
       command: >
