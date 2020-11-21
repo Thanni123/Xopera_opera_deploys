@@ -4,7 +4,6 @@
   vars:
     resource_group: thumbnailgeneration-rg
     location: westeurope
-    resource_group_name: newresourcegroupforthanh
     storage_account_name: storageaccforthanh
     current_directory: "{{ lookup('env', 'PWD') }}"
     function_app_name: myimageresizerappv01
@@ -14,11 +13,11 @@
     container_name2: outputBucket
   tasks:
 #NOTE: Azure Platform
-    - name: Delete resource group
-      command: >
-         az group delete
-         -n "{{ resource_group }}"
-         -y
+#    - name: Delete resource group
+#      command: >
+#         az group delete
+#         -n "{{ resource_group }}"
+#         -y
 
     - name: Delete storage account
       command: >

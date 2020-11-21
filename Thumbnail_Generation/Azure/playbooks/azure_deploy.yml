@@ -4,7 +4,6 @@
   vars:
     resource_group: thumbnailgeneration-rg
     location: westeurope
-    resource_group_name: newresourcegroupforthanh
     storage_account_name: storageaccforthanh
     current_directory: "{{ lookup('env', 'PWD') }}"
     function_app_name: myimageresizerappv01
