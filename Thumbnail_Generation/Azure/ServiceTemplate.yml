@@ -8,6 +8,7 @@
     storage_account_name: storageaccforthanh
     current_directory: "{{ lookup('env', 'PWD') }}"
     function_app_name: myimageresizerappv01
+    zip_file: X-test-ImageRes.zip
   tasks:
 #NOTE: Azure Platform
     - name: install azure-cli
