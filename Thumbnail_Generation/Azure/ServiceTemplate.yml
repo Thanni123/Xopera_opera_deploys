@@ -9,6 +9,7 @@
     current_directory: "{{ lookup('env', 'PWD') }}"
     function_app_name: myimageresizerappv01
     zip_file: X-test-ImageRes.zip
+    app_serviceplan: ThumbnailFunctionPlan
   tasks:
 #NOTE: Azure Platform
     - name: install azure-cli
@@ -40,6 +41,12 @@
       debug:
         msg: "Matched zip file: {{ zip_file_matched_subdirectory.files[0].path }}"
 
+    - name: Create appservice plan for Azure Function
+      command: >
+         az appservice plan create
+         -g "{{ resource_group }}"
+         -n "{{ app_serviceplan }}"
+
     - name: Create a Azure Function
       command: >
          az functionapp create
@@ -47,6 +54,7 @@
          -n "{{ function_app_name }}"
          -s "{{ storage_account_name }}"
          --functions-version 2
+         --plan "{{ app_serviceplan }}"
 
     - name: Deploy code to Azure function
       command: >
