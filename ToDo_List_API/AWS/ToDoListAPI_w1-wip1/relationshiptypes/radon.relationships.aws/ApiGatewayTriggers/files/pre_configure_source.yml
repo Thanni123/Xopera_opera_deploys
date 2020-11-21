@@ -3,7 +3,7 @@
   hosts: localhost
   gather_facts: false
   tasks:
-    - name: Find swagger file by name
+    - name: Find swagger file by name _pre_configure_source.yml
       find:
         paths: "/tmp/"
         patterns: "{{ swagger_file }}"

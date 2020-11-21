@@ -1,7 +1,7 @@
 ---
 - hosts: all
   tasks:
-    - name: Find swagger file by name
+    - name: Find swagger file by name _create.yml
       find:
         paths: "/tmp/"
         patterns: "{{ swagger_file }}"
@@ -24,7 +24,7 @@
         path: "/tmp/{{ swagger_file }}"
         state: touch
 
-    - name: Find generated swagger file by name
+    - name: Find generated swagger file by name _create.yml
       find:
         paths: "/tmp/"
         patterns: "{{ swagger_file }}"
