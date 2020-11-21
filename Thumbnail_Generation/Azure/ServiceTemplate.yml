@@ -5,7 +5,7 @@
     resource_group: thumbnailgeneration-rg
     location: westeurope
     resource_group_name: newresourcegroupforthanh
-    storage_account_name: newstorageaccountforthanh
+    storage_account_name: storageaccforthanh
   tasks:
     - name: install azure-cli
       pip:
