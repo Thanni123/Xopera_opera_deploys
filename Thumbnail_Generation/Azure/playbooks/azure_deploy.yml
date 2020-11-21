@@ -37,7 +37,7 @@
          -n "{{ storage_account_name }}"
       register: storage_account_keys_list_output
 
-    - debug: var=storage_account_keys_list_output.stdout.value
+    - debug: var=storage_account_keys_list_output.stdout[0].value
 
 #    - name: Az role assginment for creating blob storage
 #      command: >
