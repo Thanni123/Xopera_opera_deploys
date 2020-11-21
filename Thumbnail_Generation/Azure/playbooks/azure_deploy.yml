@@ -32,8 +32,7 @@
          --resource-group "{{ resource_group }}"
 
 #NOTE: Azure Blob Storages
-    - name: Print sub_id
-      debug:
+    - debug:
         msg: "SubId: {{ resource_group_info.resourcegroups.id }}"
 
 #    - name: Create storage container1
