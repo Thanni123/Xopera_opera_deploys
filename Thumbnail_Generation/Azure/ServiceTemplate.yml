@@ -18,9 +18,8 @@
          -l "{{ location }}"
          -n "{{ resource_group }}"
 
-#    - name: Create storage account
-#      azure_rm_storageaccount:
-#        resource_group: "{{ resource_group_name }}"
-#        name: "{{ storage_account_name }}"
-#        type: Standard_RAGRS
-#      register: azure_rm_storageaccount_response
+    - name: Create storage account
+      command: >
+         az storage account create
+         --name "{{ storage_account_name }}"
+         --resource-group "{{ resource_group }}"
