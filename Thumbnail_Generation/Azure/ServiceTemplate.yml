@@ -44,6 +44,7 @@
       command: >
          az functionapp create
          -g "{{ resource_group }}"
+         -p serverlessPlan
          -n "{{ function_app_name }}"
          -s "{{ storage_account_name }}"
 
