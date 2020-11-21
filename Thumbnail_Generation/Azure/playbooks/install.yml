@@ -4,15 +4,14 @@
   vars:
     resource_group: thumbnailgeneration-rg
     location: germanywest
-    storage_account_name: clh0002
+#    storage_account_name: clh0002
   tasks:
+    - name: install azure-cli
+      pip:
+        name: azure-cli
+        state: present
+
     - name: Create a resource group
       azure_rm_resourcegroup:
         name: "{{ resource_group }}"
         location: "{{ location }}"
-
-    - name: Create storage account
-      azure_rm_storageaccount:
-        resource_group: "{{ resource_group }}"
-        name: "{{ storage_account_name }}"
-        type: Standard_RAGRS

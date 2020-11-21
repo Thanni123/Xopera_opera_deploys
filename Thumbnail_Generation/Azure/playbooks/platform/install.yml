@@ -2,26 +2,16 @@
 - name: Configure Azure
   hosts: localhost
   vars:
-    user_name: thanhphongtruong@live.de
-    password: berti1000
+    resource_group: thumbnailgeneration-rg
+    location: germanywest
+    storage_account_name: clh0002
   tasks:
-    - name: azure login
-      command: >
-         az login
-         -u "{{ user_name }}"
-         -p "{{ password }}"
-
     - name: install azure-cli
       pip:
         name: azure-cli
         state: present
 
-    - name: install azure-functions
-      pip:
-        name: azure-functions
-        state: present
-
-    - name: install dotnet
-      pip:
-        name: dotnet
-        state: present
+    - name: Create a resource group
+      azure_rm_resourcegroup:
+        name: "{{ resource_group }}"
+        location: "{{ location }}"
