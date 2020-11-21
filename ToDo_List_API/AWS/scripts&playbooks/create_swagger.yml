@@ -40,12 +40,12 @@
 
     - name: Initialize empty swagger.json if it does not exist
       file:
-        path: "{{ current_directory }}/{{ swagger_file }}"
+        path: "/tmp/{{ swagger_file }}"
         state: touch
 
     - name: Find generated swagger file by name
       find:
-        paths: "{{ current_directory }}"
+        paths: "/tmp/"
         patterns: "{{ swagger_file }}"
         recurse: yes
       register: matched_new_swagger_file
