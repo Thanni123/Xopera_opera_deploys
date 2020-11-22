@@ -40,7 +40,7 @@
     - set_fact:
         storage_keys: "{{ storage_account_keys_list_output.stdout }}"
 
-    - debug: msg="{{ item[0].value }}"
+    - debug: msg="{{ item[1].value }}"
       with_items: "{{ storage_keys }}"
 
 #    - debug:
