@@ -41,7 +41,7 @@
         storage_keys: "{{ storage_account_keys_list_output.stdout }}"
 
     - debug: msg="{{ item }}"
-      with_items: "{{ storage_keys }}"
+      with_items: "{{ storage_keys.value }}"
 
 #    - name: Az role assginment for creating blob storage
 #      command: >
