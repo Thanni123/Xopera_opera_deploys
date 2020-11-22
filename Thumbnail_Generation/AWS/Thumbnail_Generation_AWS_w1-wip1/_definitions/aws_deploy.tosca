@@ -44,7 +44,7 @@ topology_template:
         handler: "index.handler"
         memory: 128
         runtime: "nodejs12.x"
-        statement_id: "lambda-c776234f-0579-4b34-a01d-49fdb4fcb5b4"
+        statement_id: "my_lambda_id01"
         zip_file: "X-test-ImageRes.zip"
         timeout: 3
         concurrency: null
