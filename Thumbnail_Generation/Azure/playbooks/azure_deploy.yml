@@ -38,7 +38,7 @@
       register: storage_account_keys_list_output
 
     - debug:
-        msg: "{{ storage_account_keys_list_output.stdout }}"
+        msg: "{{ storage_account_keys_list_output['value'] }}"
 
     - debug:
         var: storage_account_keys_list_output.stdout|json_query('items[0].value')
