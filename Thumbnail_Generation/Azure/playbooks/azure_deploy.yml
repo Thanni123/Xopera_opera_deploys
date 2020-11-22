@@ -40,8 +40,8 @@
     - set_fact:
         storage_keys: "{{ storage_account_keys_list_output.stdout|from_json }}"
 
-    - debug: msg="{{ item.value['value'] }}"
-      with_items: "{{ storage_keys }}"
+    - debug:
+        msg: "{{ storage_keys.value['value'] }}"
 
 #    - name: Az role assginment for creating blob storage
 #      command: >
