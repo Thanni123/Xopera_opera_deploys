@@ -6,8 +6,8 @@
     resource_group: thumbnailgeneration-rg
     storage_account_name: storageaccforthanh
     sub_id: b988f1e0-3bed-4eae-bbc2-56e26230fd86
-    container_name1: inputBucket
-    container_name2: outputBucket
+    container_name1: inputbucketforthu
+    container_name2: outputbucketforthu
     myemail: truong1942@outlook.com
   tasks:
 #NOTE: Azure Platform
