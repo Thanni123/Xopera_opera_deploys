@@ -43,13 +43,6 @@
     - debug:
         msg: "Storage key value in first entry: {{ storage_keys[0].value }}"
 
-#    - name: Az role assginment for creating blob storage
-#      command: >
-#         az role assignment create
-#         --role "Storage Blob Data Contributor"
-#         --assignee "{{ myemail }}"
-#         --scope "/subscriptions/"{{ sub_id }}"/resourceGroups/"{{ resource_group }}"/providers/Microsoft.Storage/storageAccounts/"{{ storage_account_name }}"/blobServices/default/containers/"{{ container_name1 }}""
-
     - name: Create storage container1
       command: >
          az storage container create
@@ -58,7 +51,10 @@
          --account-key "{{ storage_keys[0].value }}"
          --auth-mode key
 
-#    - name: Create storage container2
-#      command: >
-#         az storage container create
-#         -n "{{ container_name2 }}"
+    - name: Create storage container2
+      command: >
+         az storage container create
+         --account-name "{{ storage_account_name }}"
+         --name "{{ container_name2 }}"
+         --account-key "{{ storage_keys[0].value }}"
+         --auth-mode key
