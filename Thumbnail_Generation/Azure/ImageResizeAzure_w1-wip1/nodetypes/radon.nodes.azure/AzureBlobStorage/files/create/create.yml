@@ -18,6 +18,6 @@
       command: >
          az storage container create
          --account-name "{{ app_storage_account }}"
-         --name "{{ name }}"
+         --name "{{ container }}"
          --account-key "{{ storage_keys[0].value }}"
          --auth-mode key
