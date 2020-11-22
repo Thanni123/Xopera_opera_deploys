@@ -38,16 +38,10 @@
       register: storage_account_keys_list_output
 
     - set_fact:
-        storage_keys: "{{ storage_account_keys_list_output.stdout }}"
+        storage_keys: "{{ storage_account_keys_list_output.stdout|from_json }}"
 
-    - debug: msg="{{ item[1].value }}"
+    - debug: msg="{{ item.value['value'] }}"
       with_items: "{{ storage_keys }}"
-
-#    - debug:
-#        msg: "{{ (storage_account_keys_list_output.content | from_json).value }}"
-
-#    - debug:
-#        var: storage_account_keys_list_output.stdout|json_query('items[0].value')
 
 #    - name: Az role assginment for creating blob storage
 #      command: >
