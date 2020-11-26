@@ -18,11 +18,6 @@
     (.venv) $ pip install opera
     ```
     
-* Um die TOSCA Deployment Modelle zu deployen, muss hierzu das Repository kopiert werden:
-    ```
-    (.venv) $ git clone https://github.com/Thanni123/Xopera_opera_deploys.git
-    ```
-    
 * Die jeweiligen Service Templates besitzen für die Ausführung bereits vordefinierte Property Values. Je nach Bedarf können diese manuell mit einem bel. Editor verändert werden.
     
 
@@ -37,6 +32,7 @@ Das TOSCA Deployment Modell kann dann im Anschluss durch den folgenden Befehl au
     
     opera deploy _definitions/aws_deploy.tosca
     
+**Notiz**: Hinsichtlich der Anpassung der Berechtigungen für die Rolle, kann die ```policy.json``` Datei mit einem bel. Editor angepasst werden.
 
 ### Cloud-Provider: Microsoft Azure
 Für die Ausführung muss zuvor in das Wurzelverzeichnis navigiert werden: 
@@ -60,6 +56,7 @@ Das TOSCA Deployment Modell kann dann im Anschluss durch den folgenden Befehl au
     
     opera deploy _definitions/ServiceTemplate.tosca
     
+**Notiz**: Hinsichtlich der Anpassung der Berechtigungen für die Rolle, kann die ```policy.json``` Datei mit einem bel. Editor angepasst werden.
 
 ### Microsoft Azure
 **Notiz**: Implementierung hierzu nicht vorhanden.
