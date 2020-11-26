@@ -43,7 +43,7 @@ relationship_types:
             required: true
             default: { get_attribute: [ SOURCE, name ] }
         operations:
-          pre_configure_source:
+          event_binding:
             implementation:
               primary: /relationshiptypes/radon.relationships.aws/AwsTriggers/files/event-binding.yml
               timeout: 0
