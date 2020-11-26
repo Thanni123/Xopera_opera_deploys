@@ -10,11 +10,14 @@ This is Node Type represents the Azure cloud platform.
 
 | Name | Required | Type | Constraint | Default Value | Description |
 |:---- |:-------- |:---- |:---------- |:------------- |:----------- |
-|`user_name`| `true` | `string` |   |   | The user name used for authentication. |
-|`password`|`true`|`string`| | | The password used for authentication. |
 |`region`|`true`|`string`| | | The region in which resources are/will be deployed. |
-|`app_resource_group`| `true` | `string` |   |   | Name of resource group. |
-|`app_storage_account`| `true` | `string` |   |   | Name of storage account to use. |
+
+### Attributes
+
+| Name | Type | Default Value | Description |
+|:---- |:---- |:------------- |:----------- |
+|`app_resource_group`|  |  | Name of resource group. |
+|`app_storage_account`|  |  | Name of storage account to use. |
 
 ### Capabilities
 

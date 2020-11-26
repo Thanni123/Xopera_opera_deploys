@@ -22,7 +22,7 @@ A node type that represents an AWS Lambda Function.
 | `concurrency_range` | `false` | `range` | `in_range: [1, UNBOUNDED]` |   | Range of function concurrency to search |
 | `timeout` | `true` | `integer` | `in_range: [1, 900]` | 3 | The amount of time that Lambda allows a function to run before stopping it |
 | `statement_id` | `true` | `string` |  |  | Lambda policy statement identifier |
-| `zip_file` | `true` | `string` |  |  | path to a function zip file |
+| `zip_file` | `true` | `string` |  |  | Specification of zip file |
 
 ### Attributes
 

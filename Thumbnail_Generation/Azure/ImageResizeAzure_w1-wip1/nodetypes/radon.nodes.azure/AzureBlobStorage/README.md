@@ -10,7 +10,7 @@ Abstract node type that represents an blob storage hosted on the Azure cloud pla
 
 | Name | Required | Type | Constraint | Default Value | Description |
 |:---- |:-------- |:---- |:---------- |:------------- |:----------- |
-| `container` | `true` | `string` |   |   | Name of a blob container within the storage account |
+| `name` | `true` | `string` |   |   | Name of a blob container within the storage account |
 | `source_file` | `false` | `string` |   |   | Source file name |
 | `destination_file` | `false` | `string` |   |   | Destination file name |
 

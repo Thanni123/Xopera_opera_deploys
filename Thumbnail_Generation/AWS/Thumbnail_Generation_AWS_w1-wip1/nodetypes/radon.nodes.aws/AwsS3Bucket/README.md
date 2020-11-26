@@ -14,6 +14,8 @@ A node type that represents an AWS S3 Bucket.
 | Name | Type | Default Value | Description |
 |:---- |:---- |:------------- |:----------- |
 | `arn` | `string` |   | Amazon's resource name for this bucket |
+| `bucket_name` | `string` |   | Amazon's S3 bucket name |
+| `region` | `string` |   | The region identifier, e.g., us-west-1 |
 
 ### Requirements
 

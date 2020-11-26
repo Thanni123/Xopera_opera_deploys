@@ -22,6 +22,7 @@ A node type that represents an AWS Lambda Function.
 | `api_title` | `true` | `string` |  |  | Name of the API |
 | `api_description` | `true` | `string` |  |  |  Description of the API |
 | `api_version` | `true` | `string` |  |  | Version of the API |
+| `swagger_file` | `true` | `string` |  |  | Specification of swagger file name |
 
 ### Requirements
 

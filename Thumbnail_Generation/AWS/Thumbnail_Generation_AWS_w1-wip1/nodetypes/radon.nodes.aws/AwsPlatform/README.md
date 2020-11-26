@@ -21,6 +21,7 @@ A node type that represents the AWS platform.
 |:---- |:-------- |:---- |:---------- |:------------- |:----------- |
 | `name` | `true` | `string` |  | AWS |  |
 | `region` | `true` | `string` |  |  | The region identifier, e.g., us-west-1 |
+| `policy_file` | `true` | `string` |  |  | Specification of policy file name |
 
 ### Capabilities
 
