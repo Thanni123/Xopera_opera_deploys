@@ -38,6 +38,10 @@ relationship_types:
             type: string
             required: true
             default: { get_attribute: [ TARGET, arn ] }
+          bucket_name:
+            type: string
+            required: true
+            default: { get_attribute: [ SOURCE, name ] }
         operations:
           pre_configure_source:
             implementation:
