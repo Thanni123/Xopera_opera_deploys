@@ -18,3 +18,28 @@ relationship_types:
         description: List of events
         required: true
         status: supported
+    interfaces:
+      Configure:
+        type: tosca.interfaces.relationship.Configure
+        inputs:
+          events:
+            type: string
+            required: true
+            default: { get_property: [ SELF, events ] }
+          aws_region:
+            type: string
+            required: true
+            default: { get_attribute: [ TARGET, aws_region ] }
+          role_arn:
+            type: string
+            required: true
+            default: { get_attribute: [ TARGET, host, role_arn ] }
+          function_arn:
+            type: string
+            required: true
+            default: { get_attribute: [ TARGET, arn ] }
+        operations:
+          pre_configure_source:
+            implementation:
+              primary: /relationshiptypes/radon.relationships.aws/AwsTriggers/files/event-binding.yml
+              timeout: 0
