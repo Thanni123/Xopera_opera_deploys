@@ -29,37 +29,37 @@
 ## Ausführung der TOSCA Deployment Modelle für den Thumbnail Generator
 ### Cloud-Provider: AWS
 Für die Ausführung muss zuvor in das Wurzelverzeichnis navigiert werden: 
-    ```
+
     cd <PATH_TO_Thumbnail_Generation_AWS_w1-wip1>
-    ```
+    
 
 Das TOSCA Deployment Modell kann dann im Anschluss durch den folgenden Befehl ausgeführt werden:
-    ```
+    
     opera deploy _definitions/aws_deploy.tosca
-    ```
+    
 
 ### Cloud-Provider: Microsoft Azure
 Für die Ausführung muss zuvor in das Wurzelverzeichnis navigiert werden: 
-    ```
+    
     cd <PATH_TO_ImageResizeAzure_w1-wip1>
-    ```
+    
 
 Das TOSCA Deployment Modell kann dann im Anschluss durch den folgenden Befehl ausgeführt werden:
-    ```
+    
     opera deploy _definitions/azure_deploy.tosca
-    ```
+    
 
 ## Ausführung der TOSCA Deployment Modelle für die ToDo List API
 ### AWS
 Für die Ausführung muss zuvor in das Wurzelverzeichnis navigiert werden: 
-    ```
+    
     cd <PATH_TO_ToDoListAPI_w1-wip1>
-    ```
+    
 
 Das TOSCA Deployment Modell kann dann im Anschluss durch den folgenden Befehl ausgeführt werden:
-    ```
+    
     opera deploy _definitions/ServiceTemplate.tosca
-    ```
+    
 
 ### Microsoft Azure
 **Notiz**: Implementierung hierzu nicht vorhanden.
