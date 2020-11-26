@@ -9,9 +9,9 @@
 #NOTE: Implement this vars into Node Types
     zip_file: list.zip
     region: westeurope
-    api_title: myAPI
+    api_title: apiownsbyphong
     pub_email: truong1942@outlook.com
-    pub_name: api_phong
+    pub_name: apiphong
   tasks:
     - name: install azure-cli
       pip:
