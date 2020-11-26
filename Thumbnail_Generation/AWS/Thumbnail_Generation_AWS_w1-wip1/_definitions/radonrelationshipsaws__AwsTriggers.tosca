@@ -7,7 +7,7 @@ imports:
 relationship_types:
   radon.relationships.aws.AwsTriggers:
     description: AWS-specific relationship type representing AwsResource-to-AwsLambdaFunction communication
-    derived_from: radon.relationships.Triggers
+    derived_from: radon.relationships.abstract.Triggers
     metadata:
       targetNamespace: "radon.relationships.aws"
       abstract: "false"
