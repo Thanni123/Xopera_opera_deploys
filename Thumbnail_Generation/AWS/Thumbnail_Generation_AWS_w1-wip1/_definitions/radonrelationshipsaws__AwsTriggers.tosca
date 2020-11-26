@@ -29,7 +29,7 @@ relationship_types:
           aws_region:
             type: string
             required: true
-            default: { get_attribute: [ TARGET, aws_region ] }
+            default: { get_attribute: [ TARGET, region ] }
           role_arn:
             type: string
             required: true
