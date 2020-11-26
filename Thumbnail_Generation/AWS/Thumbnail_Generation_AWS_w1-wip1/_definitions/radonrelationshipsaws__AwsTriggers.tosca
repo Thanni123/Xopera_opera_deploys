@@ -39,5 +39,5 @@ relationship_types:
         operations:
           post_configure_source:
             implementation:
-              primary: event-binding.yml
+              primary: /relationshiptypes/radon.relationships.aws/AwsTriggers/files/event-binding.yml
               timeout: 0
