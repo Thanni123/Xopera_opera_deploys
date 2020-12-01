@@ -13,27 +13,22 @@
     pub_email: truong1942@outlook.com
     pub_name: apiphong
   tasks:
+    - name: install azure-cli
+      pip:
+        name: azure-cli
+        state: present
+
     - name: Create a resource group
-      azure_rm_resourcegroup:
-        name: myResourceGroup
-        location: "{{ region }}"
+      command: >
+         az group create
+         -l "{{ region }}"
+         -n "{{ resource_group }}"
 
-    # - name: install azure-cli
-    #   pip:
-    #     name: azure-cli
-    #     state: present
-
-    # - name: Create a resource group
-    #   command: >
-    #      az group create
-    #      -l "{{ region }}"
-    #      -n "{{ resource_group }}"
-    #
-    # - name: Create storage account
-    #   command: >
-    #      az storage account create
-    #      --name "{{ storage_account }}"
-    #      --resource-group "{{ resource_group }}"
+    - name: Create storage account
+      command: >
+         az storage account create
+         --name "{{ storage_account }}"
+         --resource-group "{{ resource_group }}"
     #
     # - name: Create api management service instance
     #   command: >
